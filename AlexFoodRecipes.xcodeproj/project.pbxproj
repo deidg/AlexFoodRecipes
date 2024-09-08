@@ -54,6 +54,9 @@
 		FA21C3BA2C8DFA9500BFE805 /* AlexFoodRecipes */ = {
 			isa = PBXGroup;
 			children = (
+				FA7240D62C8E027D00F3001D /* DI */,
+				FA7240D72C8E029F00F3001D /* Data */,
+				FA7240DA2C8E02D000F3001D /* Domain */,
 				FA21C3BB2C8DFA9500BFE805 /* AppDelegate.swift */,
 				FA21C3BD2C8DFA9500BFE805 /* SceneDelegate.swift */,
 				FA21C3BF2C8DFA9500BFE805 /* ViewController.swift */,
@@ -62,6 +65,43 @@
 				FA21C3C92C8DFA9800BFE805 /* Info.plist */,
 			);
 			path = AlexFoodRecipes;
+			sourceTree = "<group>";
+		};
+		FA7240D62C8E027D00F3001D /* DI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		FA7240D72C8E029F00F3001D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FA7240D92C8E02BF00F3001D /* Networking */,
+				FA7240D82C8E02B500F3001D /* Storage */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FA7240D82C8E02B500F3001D /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		FA7240D92C8E02BF00F3001D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		FA7240DA2C8E02D000F3001D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

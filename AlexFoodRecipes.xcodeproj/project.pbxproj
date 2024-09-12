@@ -13,11 +13,6 @@
 		FA21C3C02C8DFA9500BFE805 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3BF2C8DFA9500BFE805 /* MainTabBarViewController.swift */; };
 		FA21C3C52C8DFA9800BFE805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA21C3C42C8DFA9800BFE805 /* Assets.xcassets */; };
 		FA21C3C82C8DFA9800BFE805 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FA21C3C72C8DFA9800BFE805 /* Base */; };
-		FA21C3D02C8F518B00BFE805 /* HomeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3CF2C8F518B00BFE805 /* HomeTab.swift */; };
-		FA21C3D22C8F51F600BFE805 /* FavouritesTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3D12C8F51F600BFE805 /* FavouritesTab.swift */; };
-		FA21C3D42C8F520C00BFE805 /* NewRecipeTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3D32C8F520C00BFE805 /* NewRecipeTab.swift */; };
-		FA21C3D62C8F521E00BFE805 /* PushTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3D52C8F521E00BFE805 /* PushTab.swift */; };
-		FA21C3D82C8F523600BFE805 /* AccountTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3D72C8F523600BFE805 /* AccountTab.swift */; };
 		FA7240E82C8E054300F3001D /* BaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7240E72C8E054300F3001D /* BaseModule.swift */; };
 		FA7240EA2C8E05FC00F3001D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7240E92C8E05FC00F3001D /* Logger.swift */; };
 		FA7240EC2C8E064500F3001D /* AnyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7240EB2C8E064500F3001D /* AnyModule.swift */; };
@@ -50,11 +45,6 @@
 		FA21C3C42C8DFA9800BFE805 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA21C3C72C8DFA9800BFE805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA21C3C92C8DFA9800BFE805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA21C3CF2C8F518B00BFE805 /* HomeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTab.swift; sourceTree = "<group>"; };
-		FA21C3D12C8F51F600BFE805 /* FavouritesTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTab.swift; sourceTree = "<group>"; };
-		FA21C3D32C8F520C00BFE805 /* NewRecipeTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeTab.swift; sourceTree = "<group>"; };
-		FA21C3D52C8F521E00BFE805 /* PushTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushTab.swift; sourceTree = "<group>"; };
-		FA21C3D72C8F523600BFE805 /* AccountTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTab.swift; sourceTree = "<group>"; };
 		FA7240E72C8E054300F3001D /* BaseModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModule.swift; sourceTree = "<group>"; };
 		FA7240E92C8E05FC00F3001D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FA7240EB2C8E064500F3001D /* AnyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyModule.swift; sourceTree = "<group>"; };
@@ -343,11 +333,6 @@
 			isa = PBXGroup;
 			children = (
 				FA21C3BF2C8DFA9500BFE805 /* MainTabBarViewController.swift */,
-				FA21C3CF2C8F518B00BFE805 /* HomeTab.swift */,
-				FA21C3D12C8F51F600BFE805 /* FavouritesTab.swift */,
-				FA21C3D32C8F520C00BFE805 /* NewRecipeTab.swift */,
-				FA21C3D52C8F521E00BFE805 /* PushTab.swift */,
-				FA21C3D72C8F523600BFE805 /* AccountTab.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -471,12 +456,9 @@
 				FA7241082C8E09F000F3001D /* RouterType.swift in Sources */,
 				FA7240F62C8E08B900F3001D /* BaseViewController.swift in Sources */,
 				FA7240FC2C8E092C00F3001D /* InteractorType.swift in Sources */,
-				FA21C3D42C8F520C00BFE805 /* NewRecipeTab.swift in Sources */,
-				FA21C3D22C8F51F600BFE805 /* FavouritesTab.swift in Sources */,
 				FA7240F82C8E08F100F3001D /* AnyInteractorInput.swift in Sources */,
 				FA7240FA2C8E091800F3001D /* AnyInteractorOutput.swift in Sources */,
 				FA7240F02C8E084700F3001D /* AnyViewController.swift in Sources */,
-				FA21C3D82C8F523600BFE805 /* AccountTab.swift in Sources */,
 				FA7240EE2C8E083C00F3001D /* AnyViewInput.swift in Sources */,
 				FA7240EA2C8E05FC00F3001D /* Logger.swift in Sources */,
 				FA7240FE2C8E093600F3001D /* AnyInteractor.swift in Sources */,
@@ -484,13 +466,11 @@
 				FA72410D2C8E0AB600F3001D /* BaseModuleAssembly.swift in Sources */,
 				FA7240E82C8E054300F3001D /* BaseModule.swift in Sources */,
 				FA7241022C8E097600F3001D /* AnyPresenter.swift in Sources */,
-				FA21C3D02C8F518B00BFE805 /* HomeTab.swift in Sources */,
 				FA21C3C02C8DFA9500BFE805 /* MainTabBarViewController.swift in Sources */,
 				FA7240F42C8E089D00F3001D /* PresenterProvider.swift in Sources */,
 				FA72410A2C8E0A0000F3001D /* BaseRouter.swift in Sources */,
 				FA7241042C8E098500F3001D /* RouterProvider.swift in Sources */,
 				FA7241062C8E098F00F3001D /* PresenterType.swift in Sources */,
-				FA21C3D62C8F521E00BFE805 /* PushTab.swift in Sources */,
 				FA21C3BC2C8DFA9500BFE805 /* AppDelegate.swift in Sources */,
 				FA21C3BE2C8DFA9500BFE805 /* SceneDelegate.swift in Sources */,
 			);

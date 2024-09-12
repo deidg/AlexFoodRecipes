@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
   
@@ -14,7 +15,25 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         view.backgroundColor = .blue
+        generateTabs()
     }
+    
+    
 
+    private func generateTabs() {
+        let homeTabVC = UINavigationController(rootViewController: HomeTab())
+        let favouritesTabVC = UINavigationController(rootViewController: FavouritesTab())
+        let newRecipeTabVC = UINavigationController(rootViewController: NewRecipeTab())
+        let pushTabVC = UINavigationController(rootViewController: PushTab())
+        let accountTabVC = UINavigationController(rootViewController: AccountTab())
+        
+        homeTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "house"), tag: 0)
+        favouritesTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "bookmark"), tag: 0)
+        newRecipeTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "plus.circle"), tag: 0)
+        pushTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "bell"), tag: 0)
+        accountTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName:  "person"), tag: 0)
+        
+        viewControllers = [homeTabVC, favouritesTabVC, newRecipeTabVC, pushTabVC, accountTabVC]
+    }
 }
 

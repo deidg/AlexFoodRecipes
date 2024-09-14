@@ -37,6 +37,7 @@
 		FAC083FB2C935DE80029E622 /* NewRecipeTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083FA2C935DE80029E622 /* NewRecipeTabVC.swift */; };
 		FAC083FD2C935E4F0029E622 /* NotificationsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083FC2C935E4F0029E622 /* NotificationsTabVC.swift */; };
 		FAC083FF2C935EA70029E622 /* AccountTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083FE2C935EA70029E622 /* AccountTabVC.swift */; };
+		FAC084022C95BEF50029E622 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FAC084012C95BEF50029E622 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23AFD4B10A31250EBCEB8A6 /* Pods_AlexFoodRecipes.framework in Frameworks */,
+				FAC084022C95BEF50029E622 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +372,9 @@
 			dependencies = (
 			);
 			name = AlexFoodRecipes;
+			packageProductDependencies = (
+				FAC084012C95BEF50029E622 /* SnapKit */,
+			);
 			productName = AlexFoodRecipes;
 			productReference = FA21C3B82C8DFA9500BFE805 /* AlexFoodRecipes.app */;
 			productType = "com.apple.product-type.application";
@@ -398,6 +403,9 @@
 				Base,
 			);
 			mainGroup = FA21C3AF2C8DFA9500BFE805;
+			packageReferences = (
+				FAC084002C95BEF50029E622 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = FA21C3B92C8DFA9500BFE805 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -715,6 +723,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FAC084002C95BEF50029E622 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FAC084012C95BEF50029E622 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAC084002C95BEF50029E622 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA21C3B02C8DFA9500BFE805 /* Project object */;
 }

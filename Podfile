@@ -7,4 +7,5 @@ target 'AlexFoodRecipes' do
 
   # Pods for AlexFoodRecipes
   pod 'Swinject'
+  pod 'SnapKit', '~> 5.7.0' 
 end

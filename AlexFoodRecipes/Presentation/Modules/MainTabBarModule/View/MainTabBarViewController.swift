@@ -19,7 +19,7 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         addRecipeButton.layer.shadowColor = UIColor.red.cgColor
         addRecipeButton.layer.shadowOpacity = 0.2
         addRecipeButton.layer.shadowOffset = CGSize(width: 4, height: 4)
-        addRecipeButton.setBackgroundImage(UIImage(named: "Plus"), for: .normal)
+        addRecipeButton.setBackgroundImage(UIImage(named: "Nav Bar Menu"), for: .normal)
         return addRecipeButton
     }()
     override func viewDidLoad() {
@@ -75,8 +75,9 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         return path
     }
     private func setupAddRecipeButton() {
-        addRecipeButton.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 30, y: -20, width: 60, height: 60)
+        addRecipeButton.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 25, y: -20, width: 50, height: 50)   // - 30, y: -20, width: 55, height: 55)
         self.tabBar.addSubview(addRecipeButton)
+        
         addRecipeButton.isEnabled = true
     }
     private func setupCustomTabItems() {

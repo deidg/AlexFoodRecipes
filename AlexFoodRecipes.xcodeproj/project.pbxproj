@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B23AFD4B10A31250EBCEB8A6 /* Pods_AlexFoodRecipes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6395EF3D6D597E26F13FCE81 /* Pods_AlexFoodRecipes.framework */; };
 		FA21C3BC2C8DFA9500BFE805 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3BB2C8DFA9500BFE805 /* AppDelegate.swift */; };
 		FA21C3BE2C8DFA9500BFE805 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3BD2C8DFA9500BFE805 /* SceneDelegate.swift */; };
 		FA21C3C02C8DFA9500BFE805 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21C3BF2C8DFA9500BFE805 /* MainTabBarViewController.swift */; };
@@ -32,18 +31,27 @@
 		FA7241082C8E09F000F3001D /* RouterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7241072C8E09F000F3001D /* RouterType.swift */; };
 		FA72410A2C8E0A0000F3001D /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7241092C8E0A0000F3001D /* BaseRouter.swift */; };
 		FA72410D2C8E0AB600F3001D /* BaseModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72410C2C8E0AB600F3001D /* BaseModuleAssembly.swift */; };
+		FAA85BE52C95DED100296B7F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAA85BE42C95DED100296B7F /* Alamofire */; };
+		FAA85BE82C95DF3E00296B7F /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = FAA85BE72C95DF3E00296B7F /* Swinject */; };
+		FAA85BEA2C95DF9A00296B7F /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BE92C95DF9A00296B7F /* DataResponse.swift */; };
+		FAA85BEC2C95E1CB00296B7F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BEB2C95E1CB00296B7F /* Recipe.swift */; };
+		FAA85BEF2C95E3C300296B7F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BEE2C95E3C300296B7F /* RecipeRepository.swift */; };
+		FAA85BF32C95E42800296B7F /* RecipeRepositoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BF22C95E42800296B7F /* RecipeRepositoryInput.swift */; };
 		FAC083F72C935D3D0029E622 /* HomeTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083F62C935D3D0029E622 /* HomeTabVC.swift */; };
 		FAC083F92C935DBC0029E622 /* FavouritesTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083F82C935DBC0029E622 /* FavouritesTabVC.swift */; };
 		FAC083FB2C935DE80029E622 /* NewRecipeTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083FA2C935DE80029E622 /* NewRecipeTabVC.swift */; };
 		FAC083FD2C935E4F0029E622 /* NotificationsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083FC2C935E4F0029E622 /* NotificationsTabVC.swift */; };
 		FAC083FF2C935EA70029E622 /* AccountTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083FE2C935EA70029E622 /* AccountTabVC.swift */; };
 		FAC084022C95BEF50029E622 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = FAC084012C95BEF50029E622 /* SnapKit */; };
+		FAC084042C95D9FC0029E622 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC084032C95D9FC0029E622 /* EndPointType.swift */; };
+		FAC084062C95DA280029E622 /* AuthorizationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC084052C95DA280029E622 /* AuthorizationType.swift */; };
+		FAC084082C95DA670029E622 /* RequestItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC084072C95DA670029E622 /* RequestItem.swift */; };
+		FAC0840A2C95DA820029E622 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC084092C95DA820029E622 /* NetworkingProtocol.swift */; };
+		FAC0840C2C95DAA40029E622 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0840B2C95DAA40029E622 /* Networking.swift */; };
+		FAC0840E2C95DC6B0029E622 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0840D2C95DC6B0029E622 /* Command.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6395EF3D6D597E26F13FCE81 /* Pods_AlexFoodRecipes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AlexFoodRecipes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		98D2B3B948876EA791B60956 /* Pods-AlexFoodRecipes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlexFoodRecipes.debug.xcconfig"; path = "Target Support Files/Pods-AlexFoodRecipes/Pods-AlexFoodRecipes.debug.xcconfig"; sourceTree = "<group>"; };
-		DF9DDA482F346F752D4358E3 /* Pods-AlexFoodRecipes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AlexFoodRecipes.release.xcconfig"; path = "Target Support Files/Pods-AlexFoodRecipes/Pods-AlexFoodRecipes.release.xcconfig"; sourceTree = "<group>"; };
 		FA21C3B82C8DFA9500BFE805 /* AlexFoodRecipes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AlexFoodRecipes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA21C3BB2C8DFA9500BFE805 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA21C3BD2C8DFA9500BFE805 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -70,11 +78,21 @@
 		FA7241072C8E09F000F3001D /* RouterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterType.swift; sourceTree = "<group>"; };
 		FA7241092C8E0A0000F3001D /* BaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRouter.swift; sourceTree = "<group>"; };
 		FA72410C2C8E0AB600F3001D /* BaseModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModuleAssembly.swift; sourceTree = "<group>"; };
+		FAA85BE92C95DF9A00296B7F /* DataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataResponse.swift; path = AlexFoodRecipes/Helpers/DataResponse.swift; sourceTree = SOURCE_ROOT; };
+		FAA85BEB2C95E1CB00296B7F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = AlexFoodRecipes/Helpers/Recipe.swift; sourceTree = SOURCE_ROOT; };
+		FAA85BEE2C95E3C300296B7F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeRepository.swift; path = AlexFoodRecipes/Data/AlexFoodRecipes/Data/Repositories/AlexFoodRecipes/Data/AlexFoodRecipes/Data/Repositories/RecipeRepository/RecipeRepository.swift; sourceTree = SOURCE_ROOT; };
+		FAA85BF22C95E42800296B7F /* RecipeRepositoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepositoryInput.swift; sourceTree = "<group>"; };
 		FAC083F62C935D3D0029E622 /* HomeTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabVC.swift; sourceTree = "<group>"; };
 		FAC083F82C935DBC0029E622 /* FavouritesTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTabVC.swift; sourceTree = "<group>"; };
 		FAC083FA2C935DE80029E622 /* NewRecipeTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeTabVC.swift; sourceTree = "<group>"; };
 		FAC083FC2C935E4F0029E622 /* NotificationsTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsTabVC.swift; sourceTree = "<group>"; };
 		FAC083FE2C935EA70029E622 /* AccountTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTabVC.swift; sourceTree = "<group>"; };
+		FAC084032C95D9FC0029E622 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EndPointType.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/EndPointType.swift; sourceTree = SOURCE_ROOT; };
+		FAC084052C95DA280029E622 /* AuthorizationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthorizationType.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/AuthorizationType.swift; sourceTree = SOURCE_ROOT; };
+		FAC084072C95DA670029E622 /* RequestItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RequestItem.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/RequestItem.swift; sourceTree = SOURCE_ROOT; };
+		FAC084092C95DA820029E622 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkingProtocol.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/NetworkingProtocol.swift; sourceTree = SOURCE_ROOT; };
+		FAC0840B2C95DAA40029E622 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Networking.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/Networking.swift; sourceTree = SOURCE_ROOT; };
+		FAC0840D2C95DC6B0029E622 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,27 +100,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B23AFD4B10A31250EBCEB8A6 /* Pods_AlexFoodRecipes.framework in Frameworks */,
 				FAC084022C95BEF50029E622 /* SnapKit in Frameworks */,
+				FAA85BE52C95DED100296B7F /* Alamofire in Frameworks */,
+				FAA85BE82C95DF3E00296B7F /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5EF1FAD1957F098D4C7326F3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				6395EF3D6D597E26F13FCE81 /* Pods_AlexFoodRecipes.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		601F8A8A9578E7BEEA7ABC20 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				98D2B3B948876EA791B60956 /* Pods-AlexFoodRecipes.debug.xcconfig */,
-				DF9DDA482F346F752D4358E3 /* Pods-AlexFoodRecipes.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -113,7 +122,6 @@
 				FA21C3BA2C8DFA9500BFE805 /* AlexFoodRecipes */,
 				FA21C3B92C8DFA9500BFE805 /* Products */,
 				601F8A8A9578E7BEEA7ABC20 /* Pods */,
-				5EF1FAD1957F098D4C7326F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -134,6 +142,7 @@
 				FA7240DB2C8E035F00F3001D /* Models */,
 				FA7240DD2C8E038E00F3001D /* Presentation */,
 				FA7240DE2C8E03A300F3001D /* Helpers */,
+				FAA85BED2C95E37400296B7F /* Repositories */,
 				FA7240DC2C8E037000F3001D /* Resources */,
 				FA21C3C42C8DFA9800BFE805 /* Assets.xcassets */,
 				FA21C3C62C8DFA9800BFE805 /* LaunchScreen.storyboard */,
@@ -169,6 +178,11 @@
 		FA7240D92C8E02BF00F3001D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				FAC084032C95D9FC0029E622 /* EndPointType.swift */,
+				FAC084052C95DA280029E622 /* AuthorizationType.swift */,
+				FAC084072C95DA670029E622 /* RequestItem.swift */,
+				FAC084092C95DA820029E622 /* NetworkingProtocol.swift */,
+				FAC0840B2C95DAA40029E622 /* Networking.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -183,6 +197,8 @@
 		FA7240DB2C8E035F00F3001D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FAA85BE92C95DF9A00296B7F /* DataResponse.swift */,
+				FAA85BEB2C95E1CB00296B7F /* Recipe.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,6 +226,7 @@
 			isa = PBXGroup;
 			children = (
 				FA7240E92C8E05FC00F3001D /* Logger.swift */,
+				FAC0840D2C95DC6B0029E622 /* Command.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -354,6 +371,25 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		FAA85BED2C95E37400296B7F /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				FAA85BF02C95E3F700296B7F /* RecipeRepository */,
+			);
+			name = Repositories;
+			path = Data/AlexFoodRecipes/Data/Repositories;
+			sourceTree = "<group>";
+		};
+		FAA85BF02C95E3F700296B7F /* RecipeRepository */ = {
+			isa = PBXGroup;
+			children = (
+				FAA85BEE2C95E3C300296B7F /* RecipeRepository.swift */,
+				FAA85BF22C95E42800296B7F /* RecipeRepositoryInput.swift */,
+			);
+			name = RecipeRepository;
+			path = AlexFoodRecipes/Data/AlexFoodRecipes/Data/Repositories/RecipeRepository;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -361,11 +397,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA21C3CC2C8DFA9800BFE805 /* Build configuration list for PBXNativeTarget "AlexFoodRecipes" */;
 			buildPhases = (
-				46BE76703B34ADAD1E030FB6 /* [CP] Check Pods Manifest.lock */,
 				FA21C3B42C8DFA9500BFE805 /* Sources */,
 				FA21C3B52C8DFA9500BFE805 /* Frameworks */,
 				FA21C3B62C8DFA9500BFE805 /* Resources */,
-				EC9CA804866941B7AA537E99 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,6 +408,8 @@
 			name = AlexFoodRecipes;
 			packageProductDependencies = (
 				FAC084012C95BEF50029E622 /* SnapKit */,
+				FAA85BE42C95DED100296B7F /* Alamofire */,
+				FAA85BE72C95DF3E00296B7F /* Swinject */,
 			);
 			productName = AlexFoodRecipes;
 			productReference = FA21C3B82C8DFA9500BFE805 /* AlexFoodRecipes.app */;
@@ -405,6 +441,8 @@
 			mainGroup = FA21C3AF2C8DFA9500BFE805;
 			packageReferences = (
 				FAC084002C95BEF50029E622 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				FAA85BE32C95DED100296B7F /* XCRemoteSwiftPackageReference "Alamofire" */,
+				FAA85BE62C95DF3E00296B7F /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = FA21C3B92C8DFA9500BFE805 /* Products */;
 			projectDirPath = "";
@@ -427,48 +465,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		46BE76703B34ADAD1E030FB6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AlexFoodRecipes-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		EC9CA804866941B7AA537E99 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AlexFoodRecipes/Pods-AlexFoodRecipes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AlexFoodRecipes/Pods-AlexFoodRecipes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AlexFoodRecipes/Pods-AlexFoodRecipes-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		FA21C3B42C8DFA9500BFE805 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -476,24 +472,34 @@
 			files = (
 				FA7241002C8E096900F3001D /* AnyModueInput.swift in Sources */,
 				FA7240EC2C8E064500F3001D /* AnyModule.swift in Sources */,
+				FAA85BEC2C95E1CB00296B7F /* Recipe.swift in Sources */,
 				FA7241082C8E09F000F3001D /* RouterType.swift in Sources */,
 				FAC083FF2C935EA70029E622 /* AccountTabVC.swift in Sources */,
 				FA7240F62C8E08B900F3001D /* BaseViewController.swift in Sources */,
 				FA7240FC2C8E092C00F3001D /* InteractorType.swift in Sources */,
+				FAC084082C95DA670029E622 /* RequestItem.swift in Sources */,
+				FAC0840A2C95DA820029E622 /* NetworkingProtocol.swift in Sources */,
 				FA7240F82C8E08F100F3001D /* AnyInteractorInput.swift in Sources */,
 				FA7240FA2C8E091800F3001D /* AnyInteractorOutput.swift in Sources */,
 				FA7240F02C8E084700F3001D /* AnyViewController.swift in Sources */,
 				FA7240EE2C8E083C00F3001D /* AnyViewInput.swift in Sources */,
+				FAA85BEF2C95E3C300296B7F /* RecipeRepository.swift in Sources */,
 				FA7240EA2C8E05FC00F3001D /* Logger.swift in Sources */,
 				FA7240FE2C8E093600F3001D /* AnyInteractor.swift in Sources */,
 				FAC083FB2C935DE80029E622 /* NewRecipeTabVC.swift in Sources */,
 				FA7240F22C8E085400F3001D /* AnyViewOutput.swift in Sources */,
+				FAA85BEA2C95DF9A00296B7F /* DataResponse.swift in Sources */,
+				FAC084062C95DA280029E622 /* AuthorizationType.swift in Sources */,
 				FA72410D2C8E0AB600F3001D /* BaseModuleAssembly.swift in Sources */,
 				FA7240E82C8E054300F3001D /* BaseModule.swift in Sources */,
+				FAA85BF32C95E42800296B7F /* RecipeRepositoryInput.swift in Sources */,
+				FAC0840C2C95DAA40029E622 /* Networking.swift in Sources */,
+				FAC0840E2C95DC6B0029E622 /* Command.swift in Sources */,
 				FA7241022C8E097600F3001D /* AnyPresenter.swift in Sources */,
 				FA21C3C02C8DFA9500BFE805 /* MainTabBarViewController.swift in Sources */,
 				FAC083F92C935DBC0029E622 /* FavouritesTabVC.swift in Sources */,
 				FA7240F42C8E089D00F3001D /* PresenterProvider.swift in Sources */,
+				FAC084042C95D9FC0029E622 /* EndPointType.swift in Sources */,
 				FA72410A2C8E0A0000F3001D /* BaseRouter.swift in Sources */,
 				FA7241042C8E098500F3001D /* RouterProvider.swift in Sources */,
 				FA7241062C8E098F00F3001D /* PresenterType.swift in Sources */,
@@ -639,7 +645,6 @@
 		};
 		FA21C3CD2C8DFA9800BFE805 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 98D2B3B948876EA791B60956 /* Pods-AlexFoodRecipes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -671,7 +676,6 @@
 		};
 		FA21C3CE2C8DFA9800BFE805 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF9DDA482F346F752D4358E3 /* Pods-AlexFoodRecipes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -725,6 +729,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FAA85BE32C95DED100296B7F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		FAA85BE62C95DF3E00296B7F /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 		FAC084002C95BEF50029E622 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -736,6 +756,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FAA85BE42C95DED100296B7F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAA85BE32C95DED100296B7F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		FAA85BE72C95DF3E00296B7F /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAA85BE62C95DF3E00296B7F /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
 		FAC084012C95BEF50029E622 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FAC084002C95BEF50029E622 /* XCRemoteSwiftPackageReference "SnapKit" */;

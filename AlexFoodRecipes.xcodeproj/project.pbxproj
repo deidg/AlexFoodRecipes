@@ -151,6 +151,198 @@
 			path = AlexFoodRecipes;
 			sourceTree = "<group>";
 		};
+		FA31777B2C9C5891005DCC18 /* FavouritesTabModule */ = {
+			isa = PBXGroup;
+			children = (
+				FA3177802C9C58B9005DCC18 /* Assembly */,
+				FA31777F2C9C58B6005DCC18 /* View */,
+				FA31777E2C9C58B1005DCC18 /* Interactor */,
+				FA31777D2C9C58AE005DCC18 /* Presenter */,
+				FA31777C2C9C58AB005DCC18 /* Router */,
+			);
+			path = FavouritesTabModule;
+			sourceTree = "<group>";
+		};
+		FA31777C2C9C58AB005DCC18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA31777D2C9C58AE005DCC18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA31777E2C9C58B1005DCC18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FA31777F2C9C58B6005DCC18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAC083F82C935DBC0029E622 /* FavouritesTabVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA3177802C9C58B9005DCC18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		FA3177812C9C58F8005DCC18 /* NewRecipeTabModule */ = {
+			isa = PBXGroup;
+			children = (
+				FA3177862C9C5928005DCC18 /* Assembly */,
+				FA3177852C9C5925005DCC18 /* View */,
+				FA3177842C9C5921005DCC18 /* Interactor */,
+				FA3177832C9C591E005DCC18 /* Presenter */,
+				FA3177822C9C591A005DCC18 /* Router */,
+			);
+			path = NewRecipeTabModule;
+			sourceTree = "<group>";
+		};
+		FA3177822C9C591A005DCC18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA3177832C9C591E005DCC18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA3177842C9C5921005DCC18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FA3177852C9C5925005DCC18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAC083FA2C935DE80029E622 /* NewRecipeTabVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA3177862C9C5928005DCC18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		FA3177872C9C5967005DCC18 /* NotificationsTabModule */ = {
+			isa = PBXGroup;
+			children = (
+				FA31778C2C9C5988005DCC18 /* Assembly */,
+				FA31778B2C9C5985005DCC18 /* View */,
+				FA31778A2C9C5983005DCC18 /* Interactor */,
+				FA3177892C9C5980005DCC18 /* Presenter */,
+				FA3177882C9C597D005DCC18 /* Router */,
+			);
+			path = NotificationsTabModule;
+			sourceTree = "<group>";
+		};
+		FA3177882C9C597D005DCC18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA3177892C9C5980005DCC18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA31778A2C9C5983005DCC18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FA31778B2C9C5985005DCC18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAC083FC2C935E4F0029E622 /* NotificationsTabVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA31778C2C9C5988005DCC18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		FA31778D2C9C59B5005DCC18 /* AccountTabModule */ = {
+			isa = PBXGroup;
+			children = (
+				FA3177922C9C59C7005DCC18 /* Assembly */,
+				FA3177912C9C59C4005DCC18 /* View */,
+				FA3177902C9C59C1005DCC18 /* Interactor */,
+				FA31778F2C9C59BE005DCC18 /* Presenter */,
+				FA31778E2C9C59BB005DCC18 /* Router */,
+			);
+			path = AccountTabModule;
+			sourceTree = "<group>";
+		};
+		FA31778E2C9C59BB005DCC18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA31778F2C9C59BE005DCC18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA3177902C9C59C1005DCC18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FA3177912C9C59C4005DCC18 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAC083FE2C935EA70029E622 /* AccountTabVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA3177922C9C59C7005DCC18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		FA7240D62C8E027D00F3001D /* DI */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +446,11 @@
 			isa = PBXGroup;
 			children = (
 				FA72410E2C8E0B6400F3001D /* MainTabBarModule */,
+				FAA85BF42C9B486700296B7F /* HomeTabModule */,
+				FA31777B2C9C5891005DCC18 /* FavouritesTabModule */,
+				FA3177812C9C58F8005DCC18 /* NewRecipeTabModule */,
+				FA3177872C9C5967005DCC18 /* NotificationsTabModule */,
+				FA31778D2C9C59B5005DCC18 /* AccountTabModule */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -362,11 +559,6 @@
 			isa = PBXGroup;
 			children = (
 				FA21C3BF2C8DFA9500BFE805 /* MainTabBarViewController.swift */,
-				FAC083F62C935D3D0029E622 /* HomeTabVC.swift */,
-				FAC083F82C935DBC0029E622 /* FavouritesTabVC.swift */,
-				FAC083FA2C935DE80029E622 /* NewRecipeTabVC.swift */,
-				FAC083FC2C935E4F0029E622 /* NotificationsTabVC.swift */,
-				FAC083FE2C935EA70029E622 /* AccountTabVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -388,6 +580,54 @@
 			);
 			name = RecipeRepository;
 			path = AlexFoodRecipes/Data/AlexFoodRecipes/Data/Repositories/RecipeRepository;
+			sourceTree = "<group>";
+		};
+		FAA85BF42C9B486700296B7F /* HomeTabModule */ = {
+			isa = PBXGroup;
+			children = (
+				FAA85BFA2C9B48AB00296B7F /* Assembly */,
+				FAA85BF82C9B48A600296B7F /* View */,
+				FAA85BF72C9B48A300296B7F /* Interactor */,
+				FAA85BF62C9B48A100296B7F /* Presenter */,
+				FAA85BF52C9B489D00296B7F /* Router */,
+			);
+			path = HomeTabModule;
+			sourceTree = "<group>";
+		};
+		FAA85BF52C9B489D00296B7F /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FAA85BF62C9B48A100296B7F /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FAA85BF72C9B48A300296B7F /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FAA85BF82C9B48A600296B7F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAC083F62C935D3D0029E622 /* HomeTabVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAA85BFA2C9B48AB00296B7F /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

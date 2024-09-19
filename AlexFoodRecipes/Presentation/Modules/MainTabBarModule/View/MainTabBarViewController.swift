@@ -9,16 +9,12 @@ import UIKit
 import Foundation
 import SnapKit
 
-
 class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
     private let addRecipeButton : UIButton = {
         let addRecipeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         addRecipeButton.setTitle("", for: .normal)
         addRecipeButton.backgroundColor = UIColor(red: 18/255, green: 149/255, blue: 117/255, alpha: 255/255)
         addRecipeButton.layer.cornerRadius = 30
-        addRecipeButton.layer.shadowColor = UIColor.red.cgColor
-        addRecipeButton.layer.shadowOpacity = 0.2
-        addRecipeButton.layer.shadowOffset = CGSize(width: 4, height: 4)
         addRecipeButton.setBackgroundImage(UIImage(named: "Nav Bar Menu"), for: .normal)
         return addRecipeButton
     }()
@@ -28,9 +24,10 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         setupBottomView()
         addTargets()
         setupAddRecipeButton()
-    }    
-        override func loadView() {
+    }
+    override func loadView() {
         super.loadView()
+        view.backgroundColor = UIColor.yellow
         setupCustomTabBar()
     }
     override func viewDidLayoutSubviews() {
@@ -51,8 +48,9 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         self.tabBar.layer.insertSublayer(shape, at: 0)
         self.tabBar.itemWidth = 40
         self.tabBar.itemPositioning = .centered
-        self.tabBar.itemSpacing = 150
-        self.tabBar.tintColor = UIColor.red
+        self.tabBar.itemSpacing = tabBar.frame.width/4
+        self.tabBar.itemSpacing = 100
+        self.tabBar.tintColor = UIColor(red: 68/255, green: 147/255, blue: 119/255, alpha: 1)
     }
     private func getPathForTabBar() -> UIBezierPath {
         let frameWidth = self.tabBar.bounds.width
@@ -60,7 +58,6 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         let holeWidth = 150
         let holeHeight = 50
         let leftXUntilHole = Int(frameWidth/2) - Int(holeWidth/2)
-        
         let path: UIBezierPath = UIBezierPath()
         path.move(to: CGPoint(x: 0, y: 0))
         path.addLine(to: CGPoint(x: leftXUntilHole, y: 0)) //1 line
@@ -75,9 +72,8 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         return path
     }
     private func setupAddRecipeButton() {
-        addRecipeButton.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 25, y: -20, width: 50, height: 50)   // - 30, y: -20, width: 55, height: 55)
+        addRecipeButton.frame = CGRect(x: Int(self.tabBar.bounds.width)/2 - 25, y: -20, width: 50, height: 50)
         self.tabBar.addSubview(addRecipeButton)
-        
         addRecipeButton.isEnabled = true
     }
     private func setupCustomTabItems() {
@@ -85,11 +81,13 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         let favouritesTabVC = UINavigationController(rootViewController: FavouritesTab())
         let notificationsTabVC = UINavigationController(rootViewController: NotificationsTabVC())
         let accountTabVC = UINavigationController(rootViewController: AccountTabVC())
-        homeTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "home-2"), tag: 0)
-        favouritesTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Inactive"), tag: 0)
-        notificationsTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "notification-bing"), tag: 0)
-        accountTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named:  "profile"), tag: 0)
-        self.tabBarItem.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
+        let resizedHomeImage = UIImage(named: "houseIcon")?.resized(CGSize(width: 24.0, height: 24.0))
+        homeTabVC.tabBarItem = UITabBarItem(title: "", image: resizedHomeImage, tag: 0)
+        favouritesTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "Inactive"), tag: 0 )
+        notificationsTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "notification-bing"), tag: 0 )
+        accountTabVC.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "profile"), tag: 0 )
+        notificationsTabVC.tabBarItem.imageInsets.left = 50
+        favouritesTabVC.tabBarItem.imageInsets.right = 50
         viewControllers = [homeTabVC, favouritesTabVC, notificationsTabVC, accountTabVC]
     }
     private func setupBottomView() {
@@ -107,5 +105,11 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
     @objc private func buttonPressed() {
         print("herr")
     }
-    
+}
+extension UIImage {
+    func resized(_ newSize: CGSize) -> UIImage {
+        return UIGraphicsImageRenderer(size: newSize).image { [weak self] _  in
+            self?.draw(in: CGRect(origin: .zero, size: newSize))
+        }
+    }
 }

@@ -49,6 +49,9 @@
 		FAC0840A2C95DA820029E622 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC084092C95DA820029E622 /* NetworkingProtocol.swift */; };
 		FAC0840C2C95DAA40029E622 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0840B2C95DAA40029E622 /* Networking.swift */; };
 		FAC0840E2C95DC6B0029E622 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0840D2C95DC6B0029E622 /* Command.swift */; };
+		FADAFC5E2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADAFC5D2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf */; };
+		FADAFC602CA1E7F9004F08AB /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADAFC5F2CA1E7F9004F08AB /* Poppins-Regular.ttf */; };
+		FADAFC622CA1E86A004F08AB /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADAFC612CA1E86A004F08AB /* Poppins-Light.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,9 @@
 		FAC084092C95DA820029E622 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkingProtocol.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/NetworkingProtocol.swift; sourceTree = SOURCE_ROOT; };
 		FAC0840B2C95DAA40029E622 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Networking.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/Networking.swift; sourceTree = SOURCE_ROOT; };
 		FAC0840D2C95DC6B0029E622 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		FADAFC5D2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
+		FADAFC5F2CA1E7F9004F08AB /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
+		FADAFC612CA1E86A004F08AB /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +404,7 @@
 		FA7240DC2C8E037000F3001D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FADAFC5C2CA1E758004F08AB /* fonts */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -630,6 +637,16 @@
 			path = Assembly;
 			sourceTree = "<group>";
 		};
+		FADAFC5C2CA1E758004F08AB /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				FADAFC5F2CA1E7F9004F08AB /* Poppins-Regular.ttf */,
+				FADAFC612CA1E86A004F08AB /* Poppins-Light.ttf */,
+				FADAFC5D2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -699,7 +716,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA21C3C52C8DFA9800BFE805 /* Assets.xcassets in Resources */,
+				FADAFC622CA1E86A004F08AB /* Poppins-Light.ttf in Resources */,
+				FADAFC5E2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf in Resources */,
 				FA21C3C82C8DFA9800BFE805 /* Base in Resources */,
+				FADAFC602CA1E7F9004F08AB /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

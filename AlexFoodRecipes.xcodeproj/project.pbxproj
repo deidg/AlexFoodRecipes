@@ -37,6 +37,7 @@
 		FAA85BEC2C95E1CB00296B7F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BEB2C95E1CB00296B7F /* Recipe.swift */; };
 		FAA85BEF2C95E3C300296B7F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BEE2C95E3C300296B7F /* RecipeRepository.swift */; };
 		FAA85BF32C95E42800296B7F /* RecipeRepositoryInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BF22C95E42800296B7F /* RecipeRepositoryInput.swift */; };
+		FAB4BAE82CA330E200F019EE /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB4BAE72CA330E200F019EE /* CustomSegmentedControl.swift */; };
 		FAC083F72C935D3D0029E622 /* HomeTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083F62C935D3D0029E622 /* HomeTabVC.swift */; };
 		FAC083F92C935DBC0029E622 /* FavouritesTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083F82C935DBC0029E622 /* FavouritesTabVC.swift */; };
 		FAC083FB2C935DE80029E622 /* NewRecipeTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC083FA2C935DE80029E622 /* NewRecipeTabVC.swift */; };
@@ -52,6 +53,7 @@
 		FADAFC5E2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADAFC5D2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf */; };
 		FADAFC602CA1E7F9004F08AB /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADAFC5F2CA1E7F9004F08AB /* Poppins-Regular.ttf */; };
 		FADAFC622CA1E86A004F08AB /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FADAFC612CA1E86A004F08AB /* Poppins-Light.ttf */; };
+		FAFE5FF12CA48E1D002D428A /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAFE5FF02CA48E1D002D428A /* Poppins-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +87,7 @@
 		FAA85BEB2C95E1CB00296B7F /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Recipe.swift; path = AlexFoodRecipes/Helpers/Recipe.swift; sourceTree = SOURCE_ROOT; };
 		FAA85BEE2C95E3C300296B7F /* RecipeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RecipeRepository.swift; path = AlexFoodRecipes/Data/AlexFoodRecipes/Data/Repositories/AlexFoodRecipes/Data/AlexFoodRecipes/Data/Repositories/RecipeRepository/RecipeRepository.swift; sourceTree = SOURCE_ROOT; };
 		FAA85BF22C95E42800296B7F /* RecipeRepositoryInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeRepositoryInput.swift; sourceTree = "<group>"; };
+		FAB4BAE72CA330E200F019EE /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		FAC083F62C935D3D0029E622 /* HomeTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabVC.swift; sourceTree = "<group>"; };
 		FAC083F82C935DBC0029E622 /* FavouritesTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesTabVC.swift; sourceTree = "<group>"; };
 		FAC083FA2C935DE80029E622 /* NewRecipeTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRecipeTabVC.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		FADAFC5D2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		FADAFC5F2CA1E7F9004F08AB /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		FADAFC612CA1E86A004F08AB /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
+		FAFE5FF02CA48E1D002D428A /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -433,6 +437,7 @@
 		FA7240DF2C8E03CA00F3001D /* HelperViews */ = {
 			isa = PBXGroup;
 			children = (
+				FAB4BAE72CA330E200F019EE /* CustomSegmentedControl.swift */,
 			);
 			path = HelperViews;
 			sourceTree = "<group>";
@@ -643,6 +648,7 @@
 				FADAFC5F2CA1E7F9004F08AB /* Poppins-Regular.ttf */,
 				FADAFC612CA1E86A004F08AB /* Poppins-Light.ttf */,
 				FADAFC5D2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf */,
+				FAFE5FF02CA48E1D002D428A /* Poppins-Bold.ttf */,
 			);
 			path = fonts;
 			sourceTree = "<group>";
@@ -716,6 +722,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA21C3C52C8DFA9800BFE805 /* Assets.xcassets in Resources */,
+				FAFE5FF12CA48E1D002D428A /* Poppins-Bold.ttf in Resources */,
 				FADAFC622CA1E86A004F08AB /* Poppins-Light.ttf in Resources */,
 				FADAFC5E2CA1E7C1004F08AB /* Poppins-ExtraBold.ttf in Resources */,
 				FA21C3C82C8DFA9800BFE805 /* Base in Resources */,
@@ -731,6 +738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA7241002C8E096900F3001D /* AnyModueInput.swift in Sources */,
+				FAB4BAE82CA330E200F019EE /* CustomSegmentedControl.swift in Sources */,
 				FA7240EC2C8E064500F3001D /* AnyModule.swift in Sources */,
 				FAA85BEC2C95E1CB00296B7F /* Recipe.swift in Sources */,
 				FA7241082C8E09F000F3001D /* RouterType.swift in Sources */,

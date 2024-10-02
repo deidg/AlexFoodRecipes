@@ -9,28 +9,25 @@ import Foundation
 import UIKit
 import SnapKit
 
-
 final class HomeTabVC: UIViewController {
     
-    private let titleLabel: UILabel = {
+    private let greetingsLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .gray
         label.text = "Hello Jega"
+        label.frame.size.height = 17
         let customFont = UIFont(name: "Poppins-ExtraBold", size: 20) ?? UIFont.systemFont(ofSize: 20)
         label.font = customFont
         return label
     }()
     private let welcomeTextLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .orange
         label.text = "What are you cooking today?"
-        let customFont = UIFont(name: "Poppins-Regular", size: 11) ?? UIFont.systemFont(ofSize: 11)
+        let customFont = UIFont.systemFont(ofSize: 11)
         label.font = customFont
         return label
     }()
     private lazy var greetingsLabelsStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [titleLabel, welcomeTextLabel])
-//        stackView.frame = CGRect(x: 0, y: 0, width: 105, height: 52)
+        let stackView = UIStackView(arrangedSubviews: [greetingsLabel, welcomeTextLabel])
         stackView.axis = .vertical
         stackView.alignment = .fill
         stackView.distribution = .fill
@@ -39,13 +36,11 @@ final class HomeTabVC: UIViewController {
     }()
     private let userAccountImageView: UIImageView = {
         let imageView = UIImageView()
-//        imageView.frame =  CGRect(x: 0, y: 0, width: 40, height: 40)
         imageView.image = UIImage(named: "Avatar")
         return imageView
     }()
     private let filterButton: UIButton = {
         let button = UIButton()
-//        button.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         button.backgroundColor = UIColor(red: 18/255, green: 149/255, blue: 117/255, alpha: 255/255)
         let searchIcon = UIImage(named: "search-normal")
         button.setImage(searchIcon, for: .normal)
@@ -54,20 +49,18 @@ final class HomeTabVC: UIViewController {
         button.layer.cornerRadius = 15
         return button
     }()
-    private lazy var mainStackView: UIStackView = {
-        let mainStackView = UIStackView(arrangedSubviews: [greetingsLabelsStackView, userAccountImageView, filterButton])
-        mainStackView.axis = .horizontal
-        mainStackView.alignment = .fill
-        mainStackView.distribution = .fillProportionally
-        mainStackView.spacing = Constants.mainStackViewstackSpacing
-        return mainStackView
-    }()
     
+    private let segmentedControll: CustomSegmentedControl = {
+        let sC = CustomSegmentedControl()
+        return sC
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-       setupHomeTabVC()
+        setupHomeTabVC()
         setupUI()
+        
+        navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     func setupHomeTabVC() {
@@ -75,23 +68,37 @@ final class HomeTabVC: UIViewController {
     }
     
     private func setupUI() {
-        view.addSubview(mainStackView)
-        mainStackView.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(16)
-            make.top.equalTo(view).offset(71)
-            make.leading.equalTo(view).inset(30)
-            make.trailing.equalTo(view).inset(16)
-            make.height.equalTo(52)
-        }
+        view.addSubview(greetingsLabelsStackView)
         greetingsLabelsStackView.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(64)
+            make.height.equalTo(52)
+            make.leading.equalTo(view).inset(30)
             make.width.equalTo(195)
         }
-        userAccountImageView.snp.makeConstraints { make in
-            make.width.height.equalTo(40)
-        }
+        
+        view.addSubview(filterButton)
         filterButton.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(71)
+            make.trailing.equalTo(view).inset(16)
             make.width.height.equalTo(40)
         }
+        
+        view.addSubview(userAccountImageView)
+        userAccountImageView.snp.makeConstraints { make in
+            make.top.equalTo(view).offset(71)
+            make.right.equalTo(filterButton.snp.left).inset(-10)
+            make.width.height.equalTo(40)
+        }
+        
+        view.addSubview(segmentedControll)
+        segmentedControll.snp.makeConstraints { make in
+            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(10)
+            make.height.equalTo(51)
+            make.leading.trailing.equalTo(view)
+        }
+    }
+    private func addTargets() {
+        
     }
 }
 extension HomeTabVC {

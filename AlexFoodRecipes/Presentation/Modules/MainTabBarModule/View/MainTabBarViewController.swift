@@ -27,7 +27,6 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
     }
     override func loadView() {
         super.loadView()
-        view.backgroundColor = UIColor.yellow
         setupCustomTabBar()
     }
     override func viewDidLayoutSubviews() {

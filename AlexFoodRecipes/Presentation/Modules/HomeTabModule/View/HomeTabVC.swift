@@ -10,20 +10,17 @@ import UIKit
 import SnapKit
 
 final class HomeTabVC: UIViewController {
-    
     private let greetingsLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello Jega"
         label.frame.size.height = 17
-        let customFont = UIFont(name: "Poppins-ExtraBold", size: 20) ?? UIFont.systemFont(ofSize: 20)
-        label.font = customFont
+        label.font = Constants.Fonts.mainFontExtraBold
         return label
     }()
     private let welcomeTextLabel: UILabel = {
         let label = UILabel()
         label.text = "What are you cooking today?"
-        let customFont = UIFont.systemFont(ofSize: 11)
-        label.font = customFont
+        label.font =  UIFont.systemFont(ofSize: 11)
         return label
     }()
     private lazy var greetingsLabelsStackView: UIStackView = {
@@ -41,7 +38,7 @@ final class HomeTabVC: UIViewController {
     }()
     private let filterButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = UIColor(red: 18/255, green: 149/255, blue: 117/255, alpha: 255/255)
+        button.backgroundColor = Constants.Colors.mainColor
         let searchIcon = UIImage(named: "search-normal")
         button.setImage(searchIcon, for: .normal)
         button.clipsToBounds = true
@@ -49,24 +46,16 @@ final class HomeTabVC: UIViewController {
         button.layer.cornerRadius = 15
         return button
     }()
-    
-    private let segmentedControll: CustomSegmentedControl = {
-        let sC = CustomSegmentedControl()
-        return sC
-    }()
+    private lazy var segmentedControll = CustomSegmentedControl(buttonsArray: createButtonsForSegmentedControll())
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupHomeTabVC()
         setupUI()
         
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    func setupHomeTabVC() {
-        
-    }
-    
+ 
     private func setupUI() {
         view.addSubview(greetingsLabelsStackView)
         greetingsLabelsStackView.snp.makeConstraints { make in
@@ -75,34 +64,47 @@ final class HomeTabVC: UIViewController {
             make.leading.equalTo(view).inset(30)
             make.width.equalTo(195)
         }
-        
         view.addSubview(filterButton)
         filterButton.snp.makeConstraints { make in
             make.top.equalTo(view).offset(71)
             make.trailing.equalTo(view).inset(16)
             make.width.height.equalTo(40)
         }
-        
         view.addSubview(userAccountImageView)
         userAccountImageView.snp.makeConstraints { make in
             make.top.equalTo(view).offset(71)
             make.right.equalTo(filterButton.snp.left).inset(-10)
             make.width.height.equalTo(40)
         }
-        
         view.addSubview(segmentedControll)
         segmentedControll.snp.makeConstraints { make in
-            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(10)
-            make.height.equalTo(51)
+            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
+            make.height.equalTo(31)
             make.leading.trailing.equalTo(view)
         }
     }
-    private func addTargets() {
+    
+    private func createButtonsForSegmentedControll() -> [UIButton] {
+        var buttonsArrForSegmentedControl = [UIButton]()
+
+        let allCuisineButton = UIButton()
+        let indianCuisineButton = UIButton()
+        let italianCuisineButton = UIButton()
+        let asianCuisineButton = UIButton()
+        let chineseCuisineButton = UIButton()
+        let mexicanCuisineButton = UIButton()
+        let greekCuisineButton = UIButton()
         
-    }
-}
-extension HomeTabVC {
-    enum Constants{
-        static let mainStackViewstackSpacing = 10.0
+        allCuisineButton.setTitle("All", for: .normal)
+        indianCuisineButton.setTitle("Indian", for: .normal)
+        italianCuisineButton.setTitle("Italian", for: .normal)
+        asianCuisineButton.setTitle("Asian", for: .normal)
+        chineseCuisineButton.setTitle("Chinese", for: .normal)
+        mexicanCuisineButton.setTitle("Mexican", for: .normal)
+        greekCuisineButton.setTitle("Greek", for: .normal)
+        
+        buttonsArrForSegmentedControl = [allCuisineButton, indianCuisineButton, italianCuisineButton, asianCuisineButton, chineseCuisineButton, mexicanCuisineButton, greekCuisineButton]
+        
+        return buttonsArrForSegmentedControl
     }
 }

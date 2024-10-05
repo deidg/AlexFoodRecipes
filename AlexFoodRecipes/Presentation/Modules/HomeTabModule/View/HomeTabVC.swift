@@ -10,6 +10,11 @@ import UIKit
 import SnapKit
 
 final class HomeTabVC: UIViewController {
+    
+    let recipeCard = RecipeCard()
+    
+    
+    
     private let greetingsLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello Jega"
@@ -82,6 +87,17 @@ final class HomeTabVC: UIViewController {
             make.height.equalTo(31)
             make.leading.trailing.equalTo(view)
         }
+        
+        
+        view.addSubview(recipeCard)
+        recipeCard.snp.makeConstraints { make in
+            make.height.equalTo(231)
+            make.width.equalTo(150)
+            make.center.equalTo(view)
+        }
+        
+        
+        
     }
     
     private func createButtonsForSegmentedControll() -> [UIButton] {

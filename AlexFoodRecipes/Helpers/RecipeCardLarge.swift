@@ -1,5 +1,5 @@
 //
-//  RecipeCard.swift
+//  RecipeCardLarge.swift
 //  AlexFoodRecipes
 //
 //  Created by Alex on 04.10.2024.
@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-final class RecipeCard: UICollectionViewCell {
+final class RecipeCardLarge: UICollectionViewCell {
     private let recipeCell: UIView = {
         let view = UIView()
         return view

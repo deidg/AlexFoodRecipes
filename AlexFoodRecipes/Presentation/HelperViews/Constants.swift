@@ -19,7 +19,7 @@ enum Constants {
         static let mainFontBold11 = UIFont(name: "Poppins-Bold", size: 11)
 
         static let mainFontBold14 = UIFont(name: "Poppins-Bold", size: 14)
-
+        static let mainFontBold16 = UIFont(name: "Poppins-Bold", size: 16)
         static let mainFontBold17 = UIFont(name: "Poppins-Bold", size: 17)
         
         static let mainFontExtraBold = UIFont(name: "Poppins-ExtraBold", size: 20) ?? UIFont.systemFont(ofSize: 20)

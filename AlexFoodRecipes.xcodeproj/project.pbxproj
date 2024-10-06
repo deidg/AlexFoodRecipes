@@ -13,7 +13,8 @@
 		FA21C3C52C8DFA9800BFE805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA21C3C42C8DFA9800BFE805 /* Assets.xcassets */; };
 		FA21C3C82C8DFA9800BFE805 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FA21C3C72C8DFA9800BFE805 /* Base */; };
 		FA3720652CAE85EF0092212E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720642CAE85EF0092212E /* Constants.swift */; };
-		FA3720672CB01C3B0092212E /* RecipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720662CB01C3A0092212E /* RecipeCard.swift */; };
+		FA3720672CB01C3B0092212E /* RecipeCardLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720662CB01C3A0092212E /* RecipeCardLarge.swift */; };
+		FA3720692CB283740092212E /* RecipeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720682CB283740092212E /* RecipeCardSmall.swift */; };
 		FA7240E82C8E054300F3001D /* BaseModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7240E72C8E054300F3001D /* BaseModule.swift */; };
 		FA7240EA2C8E05FC00F3001D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7240E92C8E05FC00F3001D /* Logger.swift */; };
 		FA7240EC2C8E064500F3001D /* AnyModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7240EB2C8E064500F3001D /* AnyModule.swift */; };
@@ -67,7 +68,8 @@
 		FA21C3C72C8DFA9800BFE805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA21C3C92C8DFA9800BFE805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3720642CAE85EF0092212E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FA3720662CB01C3A0092212E /* RecipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCard.swift; sourceTree = "<group>"; };
+		FA3720662CB01C3A0092212E /* RecipeCardLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardLarge.swift; sourceTree = "<group>"; };
+		FA3720682CB283740092212E /* RecipeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardSmall.swift; sourceTree = "<group>"; };
 		FA7240E72C8E054300F3001D /* BaseModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModule.swift; sourceTree = "<group>"; };
 		FA7240E92C8E05FC00F3001D /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FA7240EB2C8E064500F3001D /* AnyModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyModule.swift; sourceTree = "<group>"; };
@@ -435,7 +437,8 @@
 				FAB4BAE72CA330E200F019EE /* CustomSegmentedControl.swift */,
 				FA7240E92C8E05FC00F3001D /* Logger.swift */,
 				FAC0840D2C95DC6B0029E622 /* Command.swift */,
-				FA3720662CB01C3A0092212E /* RecipeCard.swift */,
+				FA3720662CB01C3A0092212E /* RecipeCardLarge.swift */,
+				FA3720682CB283740092212E /* RecipeCardSmall.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -746,6 +749,7 @@
 				FA7241002C8E096900F3001D /* AnyModueInput.swift in Sources */,
 				FAB4BAE82CA330E200F019EE /* CustomSegmentedControl.swift in Sources */,
 				FA7240EC2C8E064500F3001D /* AnyModule.swift in Sources */,
+				FA3720692CB283740092212E /* RecipeCardSmall.swift in Sources */,
 				FAA85BEC2C95E1CB00296B7F /* Recipe.swift in Sources */,
 				FA7241082C8E09F000F3001D /* RouterType.swift in Sources */,
 				FAC083FF2C935EA70029E622 /* AccountTabVC.swift in Sources */,
@@ -764,7 +768,7 @@
 				FA7240F22C8E085400F3001D /* AnyViewOutput.swift in Sources */,
 				FAA85BEA2C95DF9A00296B7F /* DataResponse.swift in Sources */,
 				FA3720652CAE85EF0092212E /* Constants.swift in Sources */,
-				FA3720672CB01C3B0092212E /* RecipeCard.swift in Sources */,
+				FA3720672CB01C3B0092212E /* RecipeCardLarge.swift in Sources */,
 				FAC084062C95DA280029E622 /* AuthorizationType.swift in Sources */,
 				FA72410D2C8E0AB600F3001D /* BaseModuleAssembly.swift in Sources */,
 				FA7240E82C8E054300F3001D /* BaseModule.swift in Sources */,

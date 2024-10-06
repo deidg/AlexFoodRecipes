@@ -10,7 +10,8 @@ import UIKit
 import SnapKit
 
 final class HomeTabVC: UIViewController {
-    let recipeCard = RecipeCard()
+    //TODO: to orginize elements order
+    let recipeCard = RecipeCardLarge()
     private var dishesSliderView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -19,9 +20,10 @@ final class HomeTabVC: UIViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.showsHorizontalScrollIndicator = false
         view.bounces = view.contentOffset.x > 100
-        view.register(RecipeCard.self, forCellWithReuseIdentifier: "RecipeCard")
+        view.register(RecipeCardLarge.self, forCellWithReuseIdentifier: "RecipeCardLarge")
         return view
     }()
+    private let newRecipeCard = RecipeCardSmall()
     private let greetingsLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello Jega"
@@ -59,6 +61,16 @@ final class HomeTabVC: UIViewController {
         return button
     }()
     private lazy var segmentedControll = CustomSegmentedControl(buttonsArray: createButtonsForSegmentedControll())
+    
+    private let newRecipesLabel: UILabel = {
+        let label = UILabel()
+        label.frame.size = CGSize(width: 103, height: 24) // (x: 0, y: 0, width: 103, height: 24)
+        label.text = "New Recipe"
+        label.font = Constants.Fonts.mainFontBold16
+        label.textColor = .black
+        return label
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +119,23 @@ final class HomeTabVC: UIViewController {
             make.height.equalTo(231)
             make.width.equalTo(375)
         }
+        
+        view.addSubview(newRecipesLabel)
+        newRecipesLabel.snp.makeConstraints { make in
+            make.leading.equalTo(view).inset(30)
+            make.top.equalTo(dishesSliderView.snp.bottom).offset(20)
+        }
+        
+        view.addSubview(newRecipeCard)
+        newRecipeCard.snp.makeConstraints { make in
+            make.leading.equalTo(view).inset(30)
+            make.width.equalTo(251)
+            make.height.equalTo(127)
+            make.bottom.equalTo(view.snp.bottom).inset(150)
+            
+        }
+        
+        
     }
     private func createButtonsForSegmentedControll() -> [UIButton] {
         var buttonsArrForSegmentedControl = [UIButton]()
@@ -149,7 +178,7 @@ extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCard", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardLarge", for: indexPath)
         return cell
     }
 }

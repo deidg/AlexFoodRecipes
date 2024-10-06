@@ -10,11 +10,18 @@ import UIKit
 import SnapKit
 
 final class HomeTabVC: UIViewController {
-    
     let recipeCard = RecipeCard()
-    
-    
-    
+    private var dishesSliderView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 15
+        layout.estimatedItemSize = CGSize(width: 150, height: 231)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.showsHorizontalScrollIndicator = false
+        view.bounces = view.contentOffset.x > 100
+        view.register(RecipeCard.self, forCellWithReuseIdentifier: "RecipeCard")
+        return view
+    }()
     private let greetingsLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello Jega"
@@ -52,16 +59,22 @@ final class HomeTabVC: UIViewController {
         return button
     }()
     private lazy var segmentedControll = CustomSegmentedControl(buttonsArray: createButtonsForSegmentedControll())
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupUI()
-        
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        setupDelegates()
+        //        setupDishesSlider()
     }
- 
+    private func setupDelegates() {
+        dishesSliderView.delegate = self
+        dishesSliderView.dataSource = self
+    }
+    
     private func setupUI() {
+        view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         view.addSubview(greetingsLabelsStackView)
         greetingsLabelsStackView.snp.makeConstraints { make in
             make.top.equalTo(view).offset(64)
@@ -85,24 +98,19 @@ final class HomeTabVC: UIViewController {
         segmentedControll.snp.makeConstraints { make in
             make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
             make.height.equalTo(31)
-            make.leading.trailing.equalTo(view)
+            make.leading.trailing.equalTo(view).inset(20)
         }
-        
-        
-        view.addSubview(recipeCard)
-        recipeCard.snp.makeConstraints { make in
+        view.addSubview(dishesSliderView)
+        dishesSliderView.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControll.snp.bottom).offset(15)
+            make.leading.equalTo(view).inset(30)
             make.height.equalTo(231)
-            make.width.equalTo(150)
-            make.center.equalTo(view)
+            make.width.equalTo(375)
         }
-        
-        
-        
     }
-    
     private func createButtonsForSegmentedControll() -> [UIButton] {
         var buttonsArrForSegmentedControl = [UIButton]()
-
+        
         let allCuisineButton = UIButton()
         let indianCuisineButton = UIButton()
         let italianCuisineButton = UIButton()
@@ -122,5 +130,26 @@ final class HomeTabVC: UIViewController {
         buttonsArrForSegmentedControl = [allCuisineButton, indianCuisineButton, italianCuisineButton, asianCuisineButton, chineseCuisineButton, mexicanCuisineButton, greekCuisineButton]
         
         return buttonsArrForSegmentedControl
+    }
+    //    private func setupDishesSlider() {
+    //        let layout = UICollectionViewFlowLayout()
+    //                layout.scrollDirection = .horizontal
+    //                layout.minimumLineSpacing = 15
+    //                layout.estimatedItemSize = CGSize(width: 150, height: 231)
+    //                let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    //                view.showsHorizontalScrollIndicator = false
+    //                view.register(RecipeCard.self, forCellWithReuseIdentifier: "RecipeCard")
+    //    }
+}
+extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        5
+//        collectionView.accessibilityElementCount()
+    //        segmentedControll.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCard", for: indexPath)
+        return cell
     }
 }

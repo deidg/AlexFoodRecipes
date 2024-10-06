@@ -18,6 +18,8 @@ class CustomSegmentedControl: UIView {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .clear
+        scrollView.bounces = scrollView.contentOffset.x > 100
+
         return scrollView
     }()
     private var buttonsArray = [UIButton]()
@@ -89,7 +91,7 @@ class CustomSegmentedControl: UIView {
                 if let previousButton = previousButton {
                     make.leading.equalTo(previousButton.snp.trailing).offset(8)
                 } else {
-                    make.leading.equalTo(scrollView.snp.leading).offset(16)
+                    make.leading.equalTo(scrollView.snp.leading).offset(8)
                 }
             }
             previousButton = button

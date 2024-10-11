@@ -10,8 +10,14 @@ import UIKit
 import SnapKit
 
 final class HomeTabVC: UIViewController {
+    
     //TODO: to orginize elements order
-    let recipeCard = RecipeCardLarge()
+    private let recipeCard = RecipeCardLarge()
+    private let recipeCardSmall = RecipeCardSmall()
+    
+    let dishesData: [Int] = [3]
+    let newRecipesData: [Int] = [3]
+    
     private var dishesSliderView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -21,9 +27,9 @@ final class HomeTabVC: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.bounces = view.contentOffset.x > 100
         view.register(RecipeCardLarge.self, forCellWithReuseIdentifier: "RecipeCardLarge")
+        view.register(RecipeCardSmall.self, forCellWithReuseIdentifier: "RecipeCardSmall")
         return view
     }()
-    private let newRecipeCard = RecipeCardSmall()
     private let greetingsLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello Jega"
@@ -60,27 +66,38 @@ final class HomeTabVC: UIViewController {
         button.layer.cornerRadius = 15
         return button
     }()
-    private lazy var segmentedControll = CustomSegmentedControl(buttonsArray: createButtonsForSegmentedControll())
-    
+    private lazy var cuisinesButtonScroller = CustomSegmentedControl(buttonsArray: createButtonsForCuisinesButtonScroller())
     private let newRecipesLabel: UILabel = {
         let label = UILabel()
-        label.frame.size = CGSize(width: 103, height: 24) // (x: 0, y: 0, width: 103, height: 24)
+        label.frame.size = CGSize(width: 103, height: 24)
         label.text = "New Recipe"
         label.font = Constants.Fonts.mainFontBold16
         label.textColor = .black
         return label
     }()
-    
+    private var newRecipesSliderView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 15
+        layout.estimatedItemSize = CGSize(width: 251, height: 127)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.showsHorizontalScrollIndicator = false
+        view.bounces = view.contentOffset.x > 100
+        view.register(RecipeCardSmall.self, forCellWithReuseIdentifier: "RecipeCardSmall")
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
         setupDelegates()
-        //        setupDishesSlider()
     }
+    
     private func setupDelegates() {
         dishesSliderView.delegate = self
         dishesSliderView.dataSource = self
+        newRecipesSliderView.delegate = self
+        newRecipesSliderView.dataSource = self
     }
     
     private func setupUI() {
@@ -106,39 +123,35 @@ final class HomeTabVC: UIViewController {
             make.right.equalTo(filterButton.snp.left).inset(-10)
             make.width.height.equalTo(40)
         }
-        view.addSubview(segmentedControll)
-        segmentedControll.snp.makeConstraints { make in
+        view.addSubview(cuisinesButtonScroller)
+        cuisinesButtonScroller.snp.makeConstraints { make in
             make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
             make.height.equalTo(31)
             make.leading.trailing.equalTo(view).inset(20)
         }
         view.addSubview(dishesSliderView)
         dishesSliderView.snp.makeConstraints { make in
-            make.top.equalTo(segmentedControll.snp.bottom).offset(15)
+            make.top.equalTo(cuisinesButtonScroller.snp.bottom).offset(15)
             make.leading.equalTo(view).inset(30)
             make.height.equalTo(231)
             make.width.equalTo(375)
         }
-        
         view.addSubview(newRecipesLabel)
         newRecipesLabel.snp.makeConstraints { make in
             make.leading.equalTo(view).inset(30)
             make.top.equalTo(dishesSliderView.snp.bottom).offset(20)
         }
-        
-        view.addSubview(newRecipeCard)
-        newRecipeCard.snp.makeConstraints { make in
+        view.addSubview(newRecipesSliderView)
+        newRecipesSliderView.snp.makeConstraints { make in
+            make.top.equalTo(newRecipesLabel.snp.bottom).offset(5)
             make.leading.equalTo(view).inset(30)
-            make.width.equalTo(251)
             make.height.equalTo(127)
-            make.bottom.equalTo(view.snp.bottom).inset(150)
-            
+            make.width.equalTo(375)
         }
-        
-        
     }
-    private func createButtonsForSegmentedControll() -> [UIButton] {
-        var buttonsArrForSegmentedControl = [UIButton]()
+    
+    private func createButtonsForCuisinesButtonScroller() -> [UIButton] {
+        var createButtonsForCuisinesButtonScroller = [UIButton]()
         
         let allCuisineButton = UIButton()
         let indianCuisineButton = UIButton()
@@ -156,29 +169,39 @@ final class HomeTabVC: UIViewController {
         mexicanCuisineButton.setTitle("Mexican", for: .normal)
         greekCuisineButton.setTitle("Greek", for: .normal)
         
-        buttonsArrForSegmentedControl = [allCuisineButton, indianCuisineButton, italianCuisineButton, asianCuisineButton, chineseCuisineButton, mexicanCuisineButton, greekCuisineButton]
+        createButtonsForCuisinesButtonScroller = [allCuisineButton, indianCuisineButton, italianCuisineButton, asianCuisineButton, chineseCuisineButton, mexicanCuisineButton, greekCuisineButton]
         
-        return buttonsArrForSegmentedControl
+        return createButtonsForCuisinesButtonScroller
     }
-    //    private func setupDishesSlider() {
-    //        let layout = UICollectionViewFlowLayout()
-    //                layout.scrollDirection = .horizontal
-    //                layout.minimumLineSpacing = 15
-    //                layout.estimatedItemSize = CGSize(width: 150, height: 231)
-    //                let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    //                view.showsHorizontalScrollIndicator = false
-    //                view.register(RecipeCard.self, forCellWithReuseIdentifier: "RecipeCard")
-    //    }
 }
+
 extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
-//        collectionView.accessibilityElementCount()
-    //        segmentedControll.count
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
     }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == dishesSliderView {
+            return 3
+        } else if collectionView == newRecipesSliderView {
+            return 3
+        }
+        return 0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardLarge", for: indexPath)
-        return cell
+        if collectionView == dishesSliderView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardLarge", for: indexPath) as! RecipeCardLarge
+            return cell
+        } else if collectionView == newRecipesSliderView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardSmall", for: indexPath) as! RecipeCardSmall
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }
+
+
+
+

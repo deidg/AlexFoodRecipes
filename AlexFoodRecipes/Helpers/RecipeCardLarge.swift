@@ -159,4 +159,7 @@ final class RecipeCardLarge: UICollectionViewCell {
             make.edges.equalTo(bookmarkBackgroundColorView)
         }
     }
+    
+    
+    
 }

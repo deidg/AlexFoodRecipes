@@ -7,11 +7,7 @@
 
 import Foundation
 
-@objc protocol AnyViewOutputObjc {
-  @objc func handleTimeOutNotificationUpdate()
-}
-
-protocol AnyViewOutput: AnyViewOutputObjc {
+protocol AnyViewOutput {
   func onViewDidLoad()
   func onViewWillAppear()
   func onViewDidAppear()
@@ -19,7 +15,7 @@ protocol AnyViewOutput: AnyViewOutputObjc {
   func onViewDidDisappear()
 }
 
-extension AnyViewOutput {
+extension AnyViewOutput {  // экстенш протокола  - делает необзяталеьным
   func onViewDidLoad() {}
   func onViewWillAppear() {}
   func onViewDidAppear() {}

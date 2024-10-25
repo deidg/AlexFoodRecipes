@@ -9,14 +9,31 @@ import Foundation
 import UIKit
 import SnapKit
 
-final class HomeTabVC: UIViewController {
+
+final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
+    
+    enum State {
+        case initial
+        case sceletonable
+        case result(allRecipes: [Recipe])
+    }
+    
     
     //TODO: to orginize elements order
-    private let recipeCard = RecipeCardLarge()
-    private let recipeCardSmall = RecipeCardSmall()
     
-    let dishesData: [Int] = [3]
-    let newRecipesData: [Int] = [3]
+    private var allRecipes: [Recipe] = []
+    private var state: State = .initial {
+        didSet {
+            switch state {
+            case .initial:
+                print("str29")
+            case .sceletonable:
+                print("str31")
+            case .result(let allRecipes):
+                self.allRecipes = allRecipes
+            }
+        }
+    }
     
     private var dishesSliderView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -27,7 +44,7 @@ final class HomeTabVC: UIViewController {
         view.showsHorizontalScrollIndicator = false
         view.bounces = view.contentOffset.x > 100
         view.register(RecipeCardLarge.self, forCellWithReuseIdentifier: "RecipeCardLarge")
-        view.register(RecipeCardSmall.self, forCellWithReuseIdentifier: "RecipeCardSmall")
+        //        view.register(RecipeCardSmall.self, forCellWithReuseIdentifier: "RecipeCardSmall")
         return view
     }()
     private let greetingsLabel: UILabel = {
@@ -91,7 +108,8 @@ final class HomeTabVC: UIViewController {
         super.viewDidLoad()
         setupUI()
         setupDelegates()
-    }
+        }
+
     
     private func setupDelegates() {
         dishesSliderView.delegate = self
@@ -178,30 +196,45 @@ final class HomeTabVC: UIViewController {
 extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        return 1 //2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == dishesSliderView {
-            return 3
+            return allRecipes.count //1 // by presenter. data counter   iintercator - api -> presenter
         } else if collectionView == newRecipesSliderView {
-            return 3
+            return allRecipes.count  //1 //newRecipesData.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == dishesSliderView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardLarge", for: indexPath) as! RecipeCardLarge
-            return cell
-        } else if collectionView == newRecipesSliderView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardSmall", for: indexPath) as! RecipeCardSmall
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardLarge", for: indexPath) as? RecipeCardLarge else { return UICollectionViewCell() }
+            
+            let recipe = allRecipes[indexPath.item]
+            // Настройте вашу ячейку с данными `recipe`
+            cell.configure(with: recipe)
             return cell
         }
+        //        else if collectionView == newRecipesSliderView {
+        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardSmall", for: indexPath) as! RecipeCardSmall
+        //            let recipe = newRecipesData[indexPath.item]
+        //            // Настройте вашу ячейку с данными `recipe`
+        //
+        //            return cell
+        //        }
         return UICollectionViewCell()
     }
 }
 
-
-
+extension HomeTabVC: HomeTabViewInput {
+    
+    
+    func populateWith(state: State) {
+        self.state = state
+    }
+    
+    
+}
 

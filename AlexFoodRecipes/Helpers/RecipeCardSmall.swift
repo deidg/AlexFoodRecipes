@@ -13,16 +13,17 @@ final class RecipeCardSmall: UICollectionViewCell {
     
     private let newRecipeCellView: UIView = {
         let view = UIView()
-//        view.backgroundColor = .lightGray
+        view.backgroundColor = .white //.withAlphaComponent(0.1)
         return view
     }()
     
     private let contentCellView: UIView = {
         let view = UIView()
-        view.layer.shadowOpacity = 0.8
-//        view.layer.shadowOffset = .zero
-                view.layer.shadowOffset = CGSize(width: 10, height: 5)
-        view.layer.shadowRadius = 50
+        view.backgroundColor = .white
+        view.layer.shadowOpacity = 0.1
+        //        view.layer.shadowOffset = .zero
+        //                view.layer.shadowOffset = CGSize(width: 10, height: 5)
+        view.layer.shadowRadius = 2
         view.layer.borderColor = CGColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10

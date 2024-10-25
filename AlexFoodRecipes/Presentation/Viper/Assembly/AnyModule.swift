@@ -9,20 +9,21 @@ import UIKit
 import Swinject
 
 protocol ViperModuleAssembly: Assembly {
-  init()
+    init()
 }
 
 protocol AnyModule: AnyObject {
-  associatedtype View: AnyViewController
-  associatedtype Interactor: InteractorType
-  associatedtype Presenter: PresenterType
-  associatedtype Router: BaseRouter
-  associatedtype ModuleInputType
-  associatedtype ModuleAssemblyType: ViperModuleAssembly
-  
-  init()
-  
-  var vcIdentifier: String { get }
-  var viewController: View? { get set }
-  var moduleInput: ModuleInputType? { get set }
+    associatedtype View: AnyViewController
+    associatedtype Interactor: InteractorType
+    associatedtype Presenter: PresenterType
+    associatedtype Router: BaseRouter
+    associatedtype ModuleInputType
+    associatedtype ModuleAssemblyType: ViperModuleAssembly
+    
+    init()
+    
+    var storyboardID: String { get }
+    var vcIdentifier: String { get }
+    var viewController: View? { get set }
+    var moduleInput: ModuleInputType? { get set }
 }

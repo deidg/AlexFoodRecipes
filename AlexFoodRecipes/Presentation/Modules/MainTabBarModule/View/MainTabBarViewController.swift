@@ -9,7 +9,9 @@ import UIKit
 import Foundation
 import SnapKit
 
-class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
+class MainTabBarViewController: UITabBarController, AnyViewController {
+    var presenter: MainTabBarViewOutput?
+    
     private let addRecipeButton : UIButton = {
         let addRecipeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         addRecipeButton.setTitle("", for: .normal)

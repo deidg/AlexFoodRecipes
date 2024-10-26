@@ -131,8 +131,6 @@ extension BaseModuleAssembly {
                 $1.setViperProperties(view: $0.resolve(M.Presenter.View.self, name: name)!,
                                       router: $0.resolve(M.Presenter.Router.self, name: name)!,
                                       interactor: $0.resolve(M.Presenter.Interactor.self, name: name)!)
-                //                $1.alertService = $0.resolve(AlertServiceInput.self,
-                //                                             argument: $0.resolve(M.View.self)! as UIViewController)!
                 setup?($0, $1)
             })
     }

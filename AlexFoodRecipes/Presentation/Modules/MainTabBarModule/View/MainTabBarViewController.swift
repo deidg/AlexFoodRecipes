@@ -78,7 +78,7 @@ class MainTabBarViewController: UITabBarController, AnyViewController {
         addRecipeButton.isEnabled = true
     }
     private func setupCustomTabItems() {
-        let homeTabVC = UINavigationController(rootViewController: HomeTabVC())
+      let homeTabVC = Dependencies.shared.initModule(type: HomeTabModule.self).viewController!
         let favouritesTabVC = UINavigationController(rootViewController: FavouritesTab())
         let notificationsTabVC = UINavigationController(rootViewController: NotificationsTabVC())
         let accountTabVC = UINavigationController(rootViewController: AccountTabVC())
@@ -113,4 +113,8 @@ extension UIImage {
             self?.draw(in: CGRect(origin: .zero, size: newSize))
         }
     }
+}
+
+extension MainTabBarViewController: MainTabBarViewInput {
+  
 }

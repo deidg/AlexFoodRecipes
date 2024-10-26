@@ -15,5 +15,8 @@ MainTabBarRouter,
 MainTabBarModuleInput,
 MainTabBarAssembly> {
     
+  override var storyboardID: String {
+    return "MainTabBar"
+  }
 }
 

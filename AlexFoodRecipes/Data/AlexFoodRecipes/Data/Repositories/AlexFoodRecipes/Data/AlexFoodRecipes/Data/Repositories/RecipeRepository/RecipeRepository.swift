@@ -10,7 +10,11 @@ import Foundation
 struct RecipeRepository: RecipeRepositoryInput {
     //структура, которрая реализует протокол `RecipeRepositoryInput`
     let networking: NetworkingProtocol
-    
+  
+  init(networking: NetworkingProtocol) {
+    self.networking = networking
+  }
+  
     func fetchRecipes(handler: Command<[Recipe]?>) {
         let endpoint = RequestItem.getRecipe
         networking.sendRequest(endPointItem: endpoint, handler: handler)

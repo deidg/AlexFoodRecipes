@@ -14,5 +14,7 @@ HomeTabPresenter,
 HomeTabRouter,
 HomeTabModuleInput,
 HomeTabModuleAssembly> {
-    
+  override var storyboardID: String {
+    return "HomeTab"
+  }
 }

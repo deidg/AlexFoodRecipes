@@ -31,6 +31,7 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
                 print("str31")
             case .result(let allRecipes):
                 self.allRecipes = allRecipes
+              self.dishesSliderView.reloadData()
             }
         }
     }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MainTabBarInteractor: InteractorType {
+class MainTabBarInteractor: InteractorType, MainTabBarInteractorInput {
     
     weak var output: MainTabBarInteractorOutput?
     

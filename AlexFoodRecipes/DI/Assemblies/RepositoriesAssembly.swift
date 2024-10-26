@@ -8,7 +8,7 @@
 import Swinject
 
 class RepositoriesAssembly: Assembly {
-    func assemble(container: Swinject.Container) {
+    func assemble(container: Container) {
         container.register(RecipeRepositoryInput.self) { (rep) -> RecipeRepositoryInput in
             return RecipeRepository(networking: rep.resolve(NetworkingProtocol.self)!)
         }

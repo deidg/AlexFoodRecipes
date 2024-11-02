@@ -10,18 +10,23 @@ import UIKit
 import SnapKit
 
 
+
 final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
     
     enum State {
         case initial
         case sceletonable
         case result(allRecipes: [Recipe])
+        case newRecipesResult(newRecipes: [NewRecipes])
     }
     
     
     //TODO: to orginize elements order
     
     private var allRecipes: [Recipe] = []
+    private var newRecipes: [NewRecipes] = []
+    
+    
     private var state: State = .initial {
         didSet {
             switch state {
@@ -31,7 +36,10 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
                 print("str31")
             case .result(let allRecipes):
                 self.allRecipes = allRecipes
-              self.dishesSliderView.reloadData()
+                self.dishesSliderView.reloadData()
+            case .newRecipesResult(let newRecipes):
+                self.newRecipes = newRecipes
+                self.newRecipesSliderView.reloadData()
             }
         }
     }
@@ -45,7 +53,6 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         view.showsHorizontalScrollIndicator = false
         view.bounces = view.contentOffset.x > 100
         view.register(RecipeCardLarge.self, forCellWithReuseIdentifier: "RecipeCardLarge")
-        //        view.register(RecipeCardSmall.self, forCellWithReuseIdentifier: "RecipeCardSmall")
         return view
     }()
     private let greetingsLabel: UILabel = {
@@ -102,6 +109,8 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         view.showsHorizontalScrollIndicator = false
         view.bounces = view.contentOffset.x > 100
         view.register(RecipeCardSmall.self, forCellWithReuseIdentifier: "RecipeCardSmall")
+        view.backgroundColor = .white
+        
         return view
     }()
     
@@ -109,8 +118,7 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         super.viewDidLoad()
         setupUI()
         setupDelegates()
-        }
-
+    }
     
     private func setupDelegates() {
         dishesSliderView.delegate = self
@@ -163,8 +171,8 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         view.addSubview(newRecipesSliderView)
         newRecipesSliderView.snp.makeConstraints { make in
             make.top.equalTo(newRecipesLabel.snp.bottom).offset(5)
-            make.leading.equalTo(view).inset(30)
-            make.height.equalTo(127)
+            make.leading.equalTo(view).inset(18)
+            make.height.equalTo(139)
             make.width.equalTo(375)
         }
     }
@@ -217,25 +225,25 @@ extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource {
             // Настройте вашу ячейку с данными `recipe`
             cell.configure(with: recipe)
             return cell
+        } else if collectionView == newRecipesSliderView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardSmall", for: indexPath) as! RecipeCardSmall
+            print("str 235 done")
+            let newRecipe = newRecipes[indexPath.item]
+            // Настройте вашу ячейку с данными `recipe`
+            cell.configure(with: newRecipe)
+            return cell
         }
-        //        else if collectionView == newRecipesSliderView {
-        //            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardSmall", for: indexPath) as! RecipeCardSmall
-        //            let recipe = newRecipesData[indexPath.item]
-        //            // Настройте вашу ячейку с данными `recipe`
-        //
-        //            return cell
-        //        }
         return UICollectionViewCell()
     }
 }
 
 extension HomeTabVC: HomeTabViewInput {
-    
-    
     func populateWith(state: State) {
         self.state = state
     }
-    
-    
+    func populateWithNewRecipes(state: State) {
+        self.state = state
+        
+    }
 }
 

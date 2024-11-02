@@ -8,6 +8,9 @@
 import Foundation
 
 class HomeTabInteractor: InteractorType, HomeTabInteractorInput {
+  
+    
+    
     
     weak var output: HomeTabInteractorOutput?
     var recipesRepository: RecipeRepositoryInput?
@@ -20,7 +23,17 @@ class HomeTabInteractor: InteractorType, HomeTabInteractorInput {
         recipesRepository?.fetchRecipes(handler: .init(with: { [weak self] recipes in
             guard let recipes, let self else { return }
             
-            output?.proceedRecipesResult(recipes)
+//            output?.proceedResultForAllRecipes(recipes)
+            output?.proceedResultForAllRecipes(recipes)
+
+        }))
+    }
+    
+    func getNewRecipes() {
+        recipesRepository?.fetchNewRecipes(handler: .init(with: { [weak self] newRecipes in
+            guard let newRecipes, let self else { return }
+            
+            output?.proceedResultForNewRecipes(newRecipes)
         }))
     }
     

@@ -8,7 +8,7 @@
 import Foundation
 
 protocol HomeTabInteractorOutput: AnyInteractorOutput {
-    func proceedRecipesResult(_ recipes: [Recipe])
+    func proceedResultForAllRecipes(_ recipes: [Recipe])
     
-    
+    func proceedResultForNewRecipes(_ newRecipes: [NewRecipes])
 }

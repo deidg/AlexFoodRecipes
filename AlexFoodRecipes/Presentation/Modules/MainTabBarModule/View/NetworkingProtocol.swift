@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 
 protocol NetworkingProtocol {
-  func sendRequest<Response: Codable>(endPointItem: EndPointType, handler: Command<Response?>)
+  func sendRequestForAllRecipes<Response: Codable>(endPointItem: EndPointType, handler: Command<Response?>)
+    func sendRequestForNewRecipes<Response: Codable>(endPointItem: EndPointType, handler: Command<Response?>)
   func cancelAllTasksNetworkingAF()
 }
 

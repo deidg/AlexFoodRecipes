@@ -186,16 +186,6 @@ final class RecipeCardLarge: UICollectionViewCell {
         
         foodImage.kf.setImage(with: URL(string: recipe.imageURL))
 
-        
-//        if let imageURL = URL(string: recipe.imageURL) {
-//            
-//            foodImage.kf.setImage(with: imageURL)
-            
-//            foodImage.sd_setImage(with: imageURL, completed: nil)  // Using SDWebImage to load the image
-//        }
-//    else {
-//            foodImage.image = UIImage(named: "defaultImage") // Fallback if imageURL is invalid
-//        }
     }
 }
 

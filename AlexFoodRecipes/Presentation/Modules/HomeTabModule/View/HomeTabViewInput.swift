@@ -9,4 +9,8 @@ import Foundation
 
 protocol HomeTabViewInput: AnyViewInput {
     func populateWith(state: HomeTabVC.State)
+    
+    func populateWithNewRecipes(state: HomeTabVC.State)
+    
+    
 }

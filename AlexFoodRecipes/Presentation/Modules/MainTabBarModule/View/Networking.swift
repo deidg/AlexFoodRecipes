@@ -9,7 +9,8 @@ import Foundation
 import Alamofire
 
 final class Networking: NetworkingProtocol {
-    func sendRequest<Response: Codable>(endPointItem: EndPointType, handler: Command<Response?>) {
+    
+    func sendRequestForAllRecipes<Response: Codable>(endPointItem: EndPointType, handler: Command<Response?>) {
         guard let request = createUrlRequestWith(endPointItem) else {
             handler.perform(with: nil)
             return
@@ -18,7 +19,7 @@ final class Networking: NetworkingProtocol {
         AF.request(request)
             .validate(statusCode: 200...299)
             .responseData { [weak self] (response) in
-                self?.proceedResult(endPoint: endPointItem, response: response, handler: { res in
+                self?.proceedResultForAllRecipes(endPoint: endPointItem, response: response, handler: { res in
                     DispatchQueue.main.async {
                         handler.perform(with: res)
                     }
@@ -26,7 +27,26 @@ final class Networking: NetworkingProtocol {
             }
     }
     
-    private func proceedResult<Response: Codable>(endPoint: EndPointType, response: Alamofire.DataResponse<Data, AFError>, handler: @escaping (Response?) -> Void) {
+    func sendRequestForNewRecipes<Response: Codable>(endPointItem: EndPointType, handler: Command<Response?>) {
+        guard let request = createUrlRequestWith(endPointItem) else {
+            handler.perform(with: nil)
+            return
+        }
+        
+        AF.request(request)
+            .validate(statusCode: 200...299)
+            .responseData { [weak self] (response) in
+                self?.proceedResultForNewRecipes(endPoint: endPointItem, response: response, handler: { res in
+                    DispatchQueue.main.async {
+                        handler.perform(with: res)
+                    }
+                })
+            }
+    }
+    
+    
+    
+    private func proceedResultForAllRecipes<Response: Codable>(endPoint: EndPointType, response: Alamofire.DataResponse<Data, AFError>, handler: @escaping (Response?) -> Void) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             guard let self else { return }
             let result = response.result
@@ -40,7 +60,33 @@ final class Networking: NetworkingProtocol {
                         let wrapper = try JSONDecoder().decode(Response.self, from: data)
                         final = wrapper
                     } catch {
-                        print("DECODING POSHEL PO PIZDE")
+                        print("DECODING crashed")//("DECODING POSHEL PO PIZDE")
+                        final = nil
+                    }
+                }
+            case .failure(let error):
+                //TODO: Error handling
+                final = nil
+            }
+            handler(final)
+        }
+    }
+    
+    private func proceedResultForNewRecipes<Response: Codable>(endPoint: EndPointType, response: Alamofire.DataResponse<Data, AFError>, handler: @escaping (Response?) -> Void) {
+        DispatchQueue.global(qos: .utility).async { [weak self] in
+            guard let self else { return }
+            let result = response.result
+            var final: Response?
+            switch result {
+            case .success(let data):
+                if Response.self == DataResponse.self, let object = DataResponse(data: data) as? Response {
+                    final = object
+                } else {
+                    do {
+                        let wrapper = try JSONDecoder().decode(Response.self, from: data)
+                        final = wrapper
+                    } catch {
+                        print("DECODING crashed 89")//("DECODING POSHEL PO PIZDE")
                         final = nil
                     }
                 }

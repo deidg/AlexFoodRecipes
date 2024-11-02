@@ -26,17 +26,22 @@ class HomeTabPresenter: PresenterType, HomeTabModuleInput {
 extension HomeTabPresenter: HomeTabViewOutput {
     func onViewDidLoad() {
         interactor.getAllRecipes()
+        interactor.getNewRecipes()
     }
 }
 
 extension HomeTabPresenter: HomeTabInteractorOutput {
-    func proceedRecipesResult(_ recipes: [Recipe]) {
+    
+    
+    func proceedResultForAllRecipes(_ recipes: [Recipe]) {
         view?.populateWith(state: .result(allRecipes: recipes))
     }
     
+    func proceedResultForNewRecipes(_ newRecipes: [NewRecipes]) {
+        view?.populateWithNewRecipes(state: .newRecipesResult(newRecipes: newRecipes))
+    }
     
-    
-    
+   
 }
 
 

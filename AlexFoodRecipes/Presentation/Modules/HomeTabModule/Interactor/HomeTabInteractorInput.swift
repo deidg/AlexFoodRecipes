@@ -9,4 +9,7 @@ import Foundation
 
 protocol HomeTabInteractorInput: AnyInteractorInput {
     func getAllRecipes()
+    func getNewRecipes()
+    
+//    func getNewRecipes()
 }

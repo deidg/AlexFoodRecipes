@@ -1,3 +1,4 @@
+
 //
 //  HomeTabVC.swift
 //  AlexFoodRecipes
@@ -8,22 +9,22 @@
 import Foundation
 import UIKit
 import SnapKit
-
+import SkeletonView
 
 
 final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
     
     enum State {
         case initial
-        case sceletonable
-        case result(allRecipes: [Recipe])
-        case newRecipesResult(newRecipes: [NewRecipes])
+        case skeletonable
+        case result(allRecipes: [Recipe], newRecipes: [NewRecipes])
     }
     
     
     //TODO: to orginize elements order
     
     private var allRecipes: [Recipe] = []
+//    private var cuisineRecipesArray: [String] = [] //[All]
     private var newRecipes: [NewRecipes] = []
     
     
@@ -32,27 +33,45 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
             switch state {
             case .initial:
                 print("str29")
-            case .sceletonable:
+                hideSkeletons()
+            case .skeletonable:
                 print("str31")
-            case .result(let allRecipes):
+                showSkeletons()
+            case .result(let allRecipes, let newRecipes):
+                print("str41")
+                
                 self.allRecipes = allRecipes
-                self.dishesSliderView.reloadData()
-            case .newRecipesResult(let newRecipes):
                 self.newRecipes = newRecipes
-                self.newRecipesSliderView.reloadData()
+                
+                self.allRecipesCollectionView.reloadData()
+                self.newRecipesCollectionView.reloadData()
+                
+                hideSkeletons()
             }
         }
     }
     
-    private var dishesSliderView: UICollectionView = {
+    var currentPage = 1
+    var totalPages = 1
+    
+    private var allRecipesCollectionView: UICollectionView = {  // dishesSliderView
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 15
         layout.estimatedItemSize = CGSize(width: 150, height: 231)
+        
+        //@available(iOS 17.4, *)
+        //        layout.collectionView?.bouncesHorizontally = true
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.showsHorizontalScrollIndicator = false
         view.bounces = view.contentOffset.x > 100
-        view.register(RecipeCardLarge.self, forCellWithReuseIdentifier: "RecipeCardLarge")
+        //        view.alwaysBounceHorizontal = true
+        view.register(HomeTabVcRecipeCardLarge.self, forCellWithReuseIdentifier: "HomeTabVcRecipeCardLarge")
+        view.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
+        
+        view.isSkeletonable = true
+        //        view.showGradientSkeleton()
+        
         return view
     }()
     private let greetingsLabel: UILabel = {
@@ -91,7 +110,7 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         button.layer.cornerRadius = 15
         return button
     }()
-    private lazy var cuisinesButtonScroller = CustomSegmentedControl(buttonsArray: createButtonsForCuisinesButtonScroller())
+    
     private let newRecipesLabel: UILabel = {
         let label = UILabel()
         label.frame.size = CGSize(width: 103, height: 24)
@@ -100,7 +119,7 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         label.textColor = .black
         return label
     }()
-    private var newRecipesSliderView: UICollectionView = {
+    private var newRecipesCollectionView: UICollectionView = {  // newRecipesSliderView
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 15
@@ -108,8 +127,11 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.showsHorizontalScrollIndicator = false
         view.bounces = view.contentOffset.x > 100
-        view.register(RecipeCardSmall.self, forCellWithReuseIdentifier: "RecipeCardSmall")
+        view.register(HomeTabVcRecipeCardSmall.self, forCellWithReuseIdentifier: "HomeTabVcRecipeCardSmall")
+        view.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 20)
         view.backgroundColor = .white
+        
+        view.isSkeletonable = true
         
         return view
     }()
@@ -118,13 +140,25 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
         super.viewDidLoad()
         setupUI()
         setupDelegates()
+        
+        allRecipesCollectionView.isSkeletonable = true
+        newRecipesCollectionView.isSkeletonable = true
+        
+        state = .skeletonable
+        
+        
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+//        allRecipesCollectionView.refreshControl = refreshControl
+        
+        
     }
     
     private func setupDelegates() {
-        dishesSliderView.delegate = self
-        dishesSliderView.dataSource = self
-        newRecipesSliderView.delegate = self
-        newRecipesSliderView.dataSource = self
+        allRecipesCollectionView.delegate = self
+        allRecipesCollectionView.dataSource = self
+        newRecipesCollectionView.delegate = self
+        newRecipesCollectionView.dataSource = self
     }
     
     private func setupUI() {
@@ -150,94 +184,150 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput> {
             make.right.equalTo(filterButton.snp.left).inset(-10)
             make.width.height.equalTo(40)
         }
-        view.addSubview(cuisinesButtonScroller)
-        cuisinesButtonScroller.snp.makeConstraints { make in
-            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
-            make.height.equalTo(31)
-            make.leading.trailing.equalTo(view).inset(20)
-        }
-        view.addSubview(dishesSliderView)
-        dishesSliderView.snp.makeConstraints { make in
-            make.top.equalTo(cuisinesButtonScroller.snp.bottom).offset(15)
-            make.leading.equalTo(view).inset(30)
+        //        view.addSubview(cuisinesButtonScroller)
+        //        cuisinesButtonScroller.snp.makeConstraints { make in
+        //            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
+        //            make.height.equalTo(31)
+        //            make.leading.trailing.equalTo(view).inset(20)
+        //        }
+        view.addSubview(allRecipesCollectionView)
+        allRecipesCollectionView.snp.makeConstraints { make in
+//                        make.top.equalTo(cuisinesButtonScroller.snp.bottom).offset(15)
+            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(86)//(76)
+            
+            make.leading.trailing.equalToSuperview()
             make.height.equalTo(231)
-            make.width.equalTo(375)
+            //            make.width.equalTo(375)  //canceled do tu bugfixed (extra)
         }
         view.addSubview(newRecipesLabel)
         newRecipesLabel.snp.makeConstraints { make in
             make.leading.equalTo(view).inset(30)
-            make.top.equalTo(dishesSliderView.snp.bottom).offset(20)
+            make.top.equalTo(allRecipesCollectionView.snp.bottom).offset(20)
         }
-        view.addSubview(newRecipesSliderView)
-        newRecipesSliderView.snp.makeConstraints { make in
+        view.addSubview(newRecipesCollectionView)
+        newRecipesCollectionView.snp.makeConstraints { make in
             make.top.equalTo(newRecipesLabel.snp.bottom).offset(5)
-            make.leading.equalTo(view).inset(18)
+            //            make.leading.equalTo(view).inset(18)
+            make.leading.trailing.equalToSuperview()
+            
             make.height.equalTo(139)
-            make.width.equalTo(375)
+            //            make.width.equalTo(375)     //canceled do tu bugfixed (extra)
+        }
+    }
+ 
+    // - MARK: Private methods
+    // SKELETONS:
+    private func showSkeletons() {
+        allRecipesCollectionView.showAnimatedGradientSkeleton()
+        newRecipesCollectionView.showAnimatedGradientSkeleton()
+    }
+    
+    private func hideSkeletons() {
+        allRecipesCollectionView.hideSkeleton()
+        newRecipesCollectionView.hideSkeleton()
+    }
+    
+    private func setupCustomSegmentedControl(buttons: [UIButton]) {
+        let cuisinesButtonScroller = CustomSegmentedControl(buttonsArray: buttons)
+        
+        view.addSubview(cuisinesButtonScroller)
+        cuisinesButtonScroller.snp.makeConstraints { make in
+            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
+            make.height.equalTo(40)  //31
+            make.leading.trailing.equalTo(view).inset(10)  // верно
+//            make.leading.equalTo(view).inset(10)
+//            make.trailing.equalToSuperview()
+//            make.width.equalTo(750)
+
         }
     }
     
-    private func createButtonsForCuisinesButtonScroller() -> [UIButton] {
-        var createButtonsForCuisinesButtonScroller = [UIButton]()
+    private func createButtonsForCuisinesButtonScroller(cuisinesNamesArr: [String]) {
+        let newNames = ["All"] + cuisinesNamesArr
+        var listOfCuisineNames = [UIButton]()
         
-        let allCuisineButton = UIButton()
-        let indianCuisineButton = UIButton()
-        let italianCuisineButton = UIButton()
-        let asianCuisineButton = UIButton()
-        let chineseCuisineButton = UIButton()
-        let mexicanCuisineButton = UIButton()
-        let greekCuisineButton = UIButton()
+        print("I print inputAllRecipes count a str 283: \(cuisinesNamesArr.count) & cuisineNames: \(cuisinesNamesArr)")
         
-        allCuisineButton.setTitle("All", for: .normal)
-        indianCuisineButton.setTitle("Indian", for: .normal)
-        italianCuisineButton.setTitle("Italian", for: .normal)
-        asianCuisineButton.setTitle("Asian", for: .normal)
-        chineseCuisineButton.setTitle("Chinese", for: .normal)
-        mexicanCuisineButton.setTitle("Mexican", for: .normal)
-        greekCuisineButton.setTitle("Greek", for: .normal)
-        
-        createButtonsForCuisinesButtonScroller = [allCuisineButton, indianCuisineButton, italianCuisineButton, asianCuisineButton, chineseCuisineButton, mexicanCuisineButton, greekCuisineButton]
-        
-        return createButtonsForCuisinesButtonScroller
+        for cuisine in newNames {
+            print("str266")
+            let button = UIButton()
+            button.setTitle(cuisine, for: .normal)
+            listOfCuisineNames.append(button)
+        }
+        setupCustomSegmentedControl(buttons: listOfCuisineNames)
     }
+    
+    
+    @objc func loadData() {
+        // Make network call to fetch data for currentPage
+        currentPage += 1
+//        allRecipesCollectionView.endRefreshing()
+        
+        allRecipesCollectionView.reloadData()
+
+        
+//        reloadInputViews()
+//        reloadData()
+    }
+    
+    
 }
 
-extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource, SkeletonCollectionViewDataSource {
+    
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        if skeletonView == allRecipesCollectionView {
+            return "HomeTabVcRecipeCardLarge"
+        } else {
+            return "HomeTabVcRecipeCardSmall"
+        }
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1 //2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == dishesSliderView {
+        if collectionView == allRecipesCollectionView {
             return allRecipes.count //1 // by presenter. data counter   iintercator - api -> presenter
-        } else if collectionView == newRecipesSliderView {
+        } else if collectionView == newRecipesCollectionView {
             return allRecipes.count  //1 //newRecipesData.count
         }
         return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == dishesSliderView {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardLarge", for: indexPath) as? RecipeCardLarge else { return UICollectionViewCell() }
-            
-            let recipe = allRecipes[indexPath.item]
-            // Настройте вашу ячейку с данными `recipe`
-            cell.configure(with: recipe)
+        if collectionView == allRecipesCollectionView {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardLarge", for: indexPath) as? HomeTabVcRecipeCardLarge else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: allRecipes[indexPath.item])
             return cell
-        } else if collectionView == newRecipesSliderView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCardSmall", for: indexPath) as! RecipeCardSmall
-            print("str 235 done")
-            let newRecipe = newRecipes[indexPath.item]
-            // Настройте вашу ячейку с данными `recipe`
-            cell.configure(with: newRecipe)
+        } else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardSmall", for: indexPath) as? HomeTabVcRecipeCardSmall else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: newRecipes[indexPath.item])
             return cell
         }
-        return UICollectionViewCell()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == allRecipes.count - 1, currentPage < totalPages {
+            loadData()
+        }
+    }
+    
 }
 
 extension HomeTabVC: HomeTabViewInput {
+    
+    func sendCusisineArray(cuisinesNamesArr: [String]) {
+        
+        createButtonsForCuisinesButtonScroller(cuisinesNamesArr: cuisinesNamesArr)
+        
+    }
+    
     func populateWith(state: State) {
         self.state = state
     }
@@ -246,4 +336,5 @@ extension HomeTabVC: HomeTabViewInput {
         
     }
 }
+
 

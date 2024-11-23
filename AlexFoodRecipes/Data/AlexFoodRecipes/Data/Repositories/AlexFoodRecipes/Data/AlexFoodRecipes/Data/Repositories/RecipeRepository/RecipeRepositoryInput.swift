@@ -9,6 +9,9 @@ import Foundation
 
 protocol RecipeRepositoryInput {  //Определяет интерфейс для работы с репозиторием рецептов.
     
+//    func fetchRecipes(handler: Command<[Recipe]?>, _: Command<[NewRecipes]?>)
+    //    func fetchNewRecipes(handler: Command<[NewRecipes]?>)
+    
     func fetchRecipes(handler: Command<[Recipe]?>)
     func fetchNewRecipes(handler: Command<[NewRecipes]?>)
     

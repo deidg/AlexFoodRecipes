@@ -18,8 +18,8 @@
 		FA21C3C52C8DFA9800BFE805 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA21C3C42C8DFA9800BFE805 /* Assets.xcassets */; };
 		FA21C3C82C8DFA9800BFE805 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = FA21C3C72C8DFA9800BFE805 /* Base */; };
 		FA3720652CAE85EF0092212E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720642CAE85EF0092212E /* Constants.swift */; };
-		FA3720672CB01C3B0092212E /* RecipeCardLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720662CB01C3A0092212E /* RecipeCardLarge.swift */; };
-		FA3720692CB283740092212E /* RecipeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720682CB283740092212E /* RecipeCardSmall.swift */; };
+		FA3720672CB01C3B0092212E /* HomeTabVcRecipeCardLarge.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720662CB01C3A0092212E /* HomeTabVcRecipeCardLarge.swift */; };
+		FA3720692CB283740092212E /* HomeTabVcRecipeCardSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3720682CB283740092212E /* HomeTabVcRecipeCardSmall.swift */; };
 		FA3E24912CB98AE900FD9E0D /* NewRecipesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3E24902CB98AE900FD9E0D /* NewRecipesResponse.swift */; };
 		FA61D11C2CC820F60030DB32 /* TransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA61D11B2CC820F60030DB32 /* TransitionHandler.swift */; };
 		FA61D11E2CC821900030DB32 /* UIViewController + TransitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA61D11D2CC821900030DB32 /* UIViewController + TransitionHandler.swift */; };
@@ -68,6 +68,7 @@
 		FA7241082C8E09F000F3001D /* RouterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7241072C8E09F000F3001D /* RouterType.swift */; };
 		FA72410A2C8E0A0000F3001D /* BaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7241092C8E0A0000F3001D /* BaseRouter.swift */; };
 		FA72410D2C8E0AB600F3001D /* BaseModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA72410C2C8E0AB600F3001D /* BaseModuleAssembly.swift */; };
+		FAA6245C2CDA6455008FCE73 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = FAA6245B2CDA6455008FCE73 /* SkeletonView */; };
 		FAA85BEA2C95DF9A00296B7F /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BE92C95DF9A00296B7F /* DataResponse.swift */; };
 		FAA85BEC2C95E1CB00296B7F /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BEB2C95E1CB00296B7F /* Recipe.swift */; };
 		FAA85BEF2C95E3C300296B7F /* RecipeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA85BEE2C95E3C300296B7F /* RecipeRepository.swift */; };
@@ -84,6 +85,8 @@
 		FAC0840A2C95DA820029E622 /* NetworkingProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC084092C95DA820029E622 /* NetworkingProtocol.swift */; };
 		FAC0840C2C95DAA40029E622 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0840B2C95DAA40029E622 /* Networking.swift */; };
 		FAC0840E2C95DC6B0029E622 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC0840D2C95DC6B0029E622 /* Command.swift */; };
+		FAC7372E2CDF7E9400B96CB8 /* SearchRecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7372D2CDF7E9400B96CB8 /* SearchRecipesVC.swift */; };
+		FAC737302CE100B200B96CB8 /* SkeletonDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC7372F2CE100B100B96CB8 /* SkeletonDisplayable.swift */; };
 		FACF0B0B2CCD0BBC00F53381 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACF0B0A2CCD0BBC00F53381 /* MainTabBar.storyboard */; };
 		FACF0B0D2CCD103100F53381 /* HomeTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACF0B0C2CCD103100F53381 /* HomeTab.storyboard */; };
 		FACF0B0F2CCD136D00F53381 /* DataAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACF0B0E2CCD136D00F53381 /* DataAssembly.swift */; };
@@ -103,8 +106,8 @@
 		FA21C3C72C8DFA9800BFE805 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA21C3C92C8DFA9800BFE805 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA3720642CAE85EF0092212E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		FA3720662CB01C3A0092212E /* RecipeCardLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardLarge.swift; sourceTree = "<group>"; };
-		FA3720682CB283740092212E /* RecipeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCardSmall.swift; sourceTree = "<group>"; };
+		FA3720662CB01C3A0092212E /* HomeTabVcRecipeCardLarge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabVcRecipeCardLarge.swift; sourceTree = "<group>"; };
+		FA3720682CB283740092212E /* HomeTabVcRecipeCardSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabVcRecipeCardSmall.swift; sourceTree = "<group>"; };
 		FA3E24902CB98AE900FD9E0D /* NewRecipesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NewRecipesResponse.swift; path = AlexFoodRecipes/Presentation/Modules/HomeTabModule/Interactor/NewRecipesResponse.swift; sourceTree = SOURCE_ROOT; };
 		FA61D11B2CC820F60030DB32 /* TransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionHandler.swift; sourceTree = "<group>"; };
 		FA61D11D2CC821900030DB32 /* UIViewController + TransitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + TransitionHandler.swift"; sourceTree = "<group>"; };
@@ -169,6 +172,8 @@
 		FAC084092C95DA820029E622 /* NetworkingProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkingProtocol.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/NetworkingProtocol.swift; sourceTree = SOURCE_ROOT; };
 		FAC0840B2C95DAA40029E622 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Networking.swift; path = AlexFoodRecipes/Presentation/Modules/MainTabBarModule/View/Networking.swift; sourceTree = SOURCE_ROOT; };
 		FAC0840D2C95DC6B0029E622 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		FAC7372D2CDF7E9400B96CB8 /* SearchRecipesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipesVC.swift; sourceTree = "<group>"; };
+		FAC7372F2CE100B100B96CB8 /* SkeletonDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonDisplayable.swift; sourceTree = "<group>"; };
 		FACF0B0A2CCD0BBC00F53381 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		FACF0B0C2CCD103100F53381 /* HomeTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeTab.storyboard; sourceTree = "<group>"; };
 		FACF0B0E2CCD136D00F53381 /* DataAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAssembly.swift; sourceTree = "<group>"; };
@@ -187,6 +192,7 @@
 				FA11E2D32CCD49780030A20F /* SnapKit in Frameworks */,
 				FA11E2D52CCD498B0030A20F /* Alamofire in Frameworks */,
 				FA11E2D92CCD49B10030A20F /* Swinject in Frameworks */,
+				FAA6245C2CDA6455008FCE73 /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -509,8 +515,9 @@
 				FAB4BAE72CA330E200F019EE /* CustomSegmentedControl.swift */,
 				FA7240E92C8E05FC00F3001D /* Logger.swift */,
 				FAC0840D2C95DC6B0029E622 /* Command.swift */,
-				FA3720662CB01C3A0092212E /* RecipeCardLarge.swift */,
-				FA3720682CB283740092212E /* RecipeCardSmall.swift */,
+				FA3720662CB01C3A0092212E /* HomeTabVcRecipeCardLarge.swift */,
+				FA3720682CB283740092212E /* HomeTabVcRecipeCardSmall.swift */,
+				FAC7372F2CE100B100B96CB8 /* SkeletonDisplayable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -738,6 +745,7 @@
 				FA61D1372CC82A5E0030DB32 /* HomeTabViewInput.swift */,
 				FA61D1392CC82A6D0030DB32 /* HomeTabViewOutput.swift */,
 				FAC083F62C935D3D0029E622 /* HomeTabVC.swift */,
+				FAC7372D2CDF7E9400B96CB8 /* SearchRecipesVC.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -792,6 +800,7 @@
 				FA11E2D42CCD498B0030A20F /* Alamofire */,
 				FA11E2D62CCD499D0030A20F /* Kingfisher */,
 				FA11E2D82CCD49B10030A20F /* Swinject */,
+				FAA6245B2CDA6455008FCE73 /* SkeletonView */,
 			);
 			productName = AlexFoodRecipes;
 			productReference = FA21C3B82C8DFA9500BFE805 /* AlexFoodRecipes.app */;
@@ -826,6 +835,7 @@
 				FACF0B002CCD08D300F53381 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				FACF0B032CCD08F200F53381 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				FACF0B062CCD094500F53381 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				FAA6245A2CDA6454008FCE73 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = FA21C3B92C8DFA9500BFE805 /* Products */;
 			projectDirPath = "";
@@ -865,7 +875,7 @@
 				FA61D12A2CC8284E0030DB32 /* HomeTabModule.swift in Sources */,
 				FAB4BAE82CA330E200F019EE /* CustomSegmentedControl.swift in Sources */,
 				FA7240EC2C8E064500F3001D /* AnyModule.swift in Sources */,
-				FA3720692CB283740092212E /* RecipeCardSmall.swift in Sources */,
+				FA3720692CB283740092212E /* HomeTabVcRecipeCardSmall.swift in Sources */,
 				FAA85BEC2C95E1CB00296B7F /* Recipe.swift in Sources */,
 				FA7241082C8E09F000F3001D /* RouterType.swift in Sources */,
 				FAC083FF2C935EA70029E622 /* AccountTabVC.swift in Sources */,
@@ -888,12 +898,13 @@
 				FAC083FB2C935DE80029E622 /* NewRecipeTabVC.swift in Sources */,
 				FA61D1202CC822980030DB32 /* RepositoriesAssembly.swift in Sources */,
 				FA61D1262CC827D90030DB32 /* HomeTabInteractorOutput.swift in Sources */,
+				FAC737302CE100B200B96CB8 /* SkeletonDisplayable.swift in Sources */,
 				FA7240F22C8E085400F3001D /* AnyViewOutput.swift in Sources */,
 				FAA85BEA2C95DF9A00296B7F /* DataResponse.swift in Sources */,
 				FA3720652CAE85EF0092212E /* Constants.swift in Sources */,
 				FA61D1422CCBFB340030DB32 /* MainTabBarPresenter.swift in Sources */,
 				FA61D1522CCBFED60030DB32 /* MainTabBarModuleOutput.swift in Sources */,
-				FA3720672CB01C3B0092212E /* RecipeCardLarge.swift in Sources */,
+				FA3720672CB01C3B0092212E /* HomeTabVcRecipeCardLarge.swift in Sources */,
 				FAC084062C95DA280029E622 /* AuthorizationType.swift in Sources */,
 				FA61D1282CC828240030DB32 /* HomeTabInteractor.swift in Sources */,
 				FA72410D2C8E0AB600F3001D /* BaseModuleAssembly.swift in Sources */,
@@ -915,6 +926,7 @@
 				FAC083F92C935DBC0029E622 /* FavouritesTabVC.swift in Sources */,
 				FA61D1222CC826520030DB32 /* Dependencies.swift in Sources */,
 				FA7240F42C8E089D00F3001D /* PresenterProvider.swift in Sources */,
+				FAC7372E2CDF7E9400B96CB8 /* SearchRecipesVC.swift in Sources */,
 				FA3E24912CB98AE900FD9E0D /* NewRecipesResponse.swift in Sources */,
 				FA61D1342CC828C20030DB32 /* HomeTabRouterInput.swift in Sources */,
 				FAC084042C95D9FC0029E622 /* EndPointType.swift in Sources */,
@@ -1155,6 +1167,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FAA6245A2CDA6454008FCE73 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.31.0;
+			};
+		};
 		FACF0AFD2CCD08C100F53381 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject";
@@ -1208,6 +1228,11 @@
 		FA11E2D82CCD49B10030A20F /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Swinject;
+		};
+		FAA6245B2CDA6455008FCE73 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAA6245A2CDA6454008FCE73 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

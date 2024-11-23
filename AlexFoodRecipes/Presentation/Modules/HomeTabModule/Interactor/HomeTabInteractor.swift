@@ -8,33 +8,36 @@
 import Foundation
 
 class HomeTabInteractor: InteractorType, HomeTabInteractorInput {
-  
-    
-    
     
     weak var output: HomeTabInteractorOutput?
     var recipesRepository: RecipeRepositoryInput?
     
-  
     required init() {}
     
-    
-    func getAllRecipes() {
+    func getRecipes() {
+        
+        let dispatchGroup = DispatchGroup()
+        
+        var recipesArr: [Recipe] = []
+        var newRecipesArr: [NewRecipes] = []
+        
+        dispatchGroup.enter()
+        
         recipesRepository?.fetchRecipes(handler: .init(with: { [weak self] recipes in
             guard let recipes, let self else { return }
-            
-//            output?.proceedResultForAllRecipes(recipes)
-            output?.proceedResultForAllRecipes(recipes)
-
+            recipesArr = recipes
+            dispatchGroup.leave()
         }))
-    }
-    
-    func getNewRecipes() {
+        dispatchGroup.enter()
+        
         recipesRepository?.fetchNewRecipes(handler: .init(with: { [weak self] newRecipes in
             guard let newRecipes, let self else { return }
-            
-            output?.proceedResultForNewRecipes(newRecipes)
-        }))
+            newRecipesArr = newRecipes
+            dispatchGroup.leave()
+        }
+                                                         ))
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            self?.output?.proceedResultRecipes(recipesArr, newRecipesArr)
+        }
     }
-    
 }

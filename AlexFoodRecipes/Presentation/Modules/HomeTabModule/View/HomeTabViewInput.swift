@@ -12,5 +12,5 @@ protocol HomeTabViewInput: AnyViewInput {
     
     func populateWithNewRecipes(state: HomeTabVC.State)
     
-    
+    func sendCusisineArray(cuisinesNamesArr: [String])
 }

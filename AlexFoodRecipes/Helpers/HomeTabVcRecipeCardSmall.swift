@@ -1,5 +1,5 @@
 //
-//  RecipeCardSmall.swift
+//  HomeTabVcRecipeCardSmall.swift
 //  AlexFoodRecipes
 //
 //  Created by Alex on 06.10.2024.
@@ -10,16 +10,10 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-final class RecipeCardSmall: UICollectionViewCell {
-    
-    private let newRecipeCellView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }()
+final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
     private let contentCellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .white //.green//.white
         view.clipsToBounds = false
         view.layer.shadowColor = UIColor.blue.cgColor
         view.layer.shadowOffset = .zero
@@ -64,7 +58,9 @@ final class RecipeCardSmall: UICollectionViewCell {
     
     private let foodImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "newRecipeImage")
+//        image.image = UIImage(named: "newRecipeImage")
+        image.contentMode = .scaleAspectFit
+        image.clipsToBounds = true
         return image
     }()
     
@@ -74,7 +70,7 @@ final class RecipeCardSmall: UICollectionViewCell {
         label.textColor = Constants.FontsColors.fontColorGrey3
         label.frame.size.height = 17
         label.frame.size.width = 43
-        return label
+      return label
     }()
     
     private let cookingTimeImage: UIImageView = {
@@ -87,61 +83,61 @@ final class RecipeCardSmall: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
+//        contentView.isSkeletonable = true
+        isSkeletonable = true
+        skeletonCornerRadius = 10
+        
     }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     private func setupUI() {
-        addSubview(newRecipeCellView)
-        newRecipeCellView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-        addSubview(contentCellView)
+        contentView.addSubview(contentCellView)
         contentCellView.snp.makeConstraints { make in
-            make.width.equalTo(251)
+            //            make.width.equalTo(251)   //canceled do tu bugfixed (extra)
             make.height.equalTo(95)
-            make.leading.equalToSuperview().inset(12)
+            make.leading.equalToSuperview().inset(12)  // отступ для тени
             make.trailing.bottom.equalToSuperview()
         }
-        addSubview(recipeNameLabel)
+        contentCellView.addSubview(recipeNameLabel)
         recipeNameLabel.snp.makeConstraints { make in
             make.height.equalTo(23)
             make.top.equalTo(contentCellView.snp.top).inset(10)
             make.leading.equalTo(contentCellView).inset(9.3)
             make.width.equalTo(140)
         }
-        addSubview(ratingStarsStackView)
+        contentCellView.addSubview(ratingStarsStackView)
         ratingStarsStackView.snp.makeConstraints { make in
             make.height.equalTo(12)
             make.leading.equalTo(contentCellView).inset(9.3)
             make.top.equalTo(recipeNameLabel.snp.bottom).offset(5)
         }
-        addSubview(userImage)
+        contentCellView.addSubview(userImage)
         userImage.snp.makeConstraints { make in
             make.leading.equalTo(contentCellView).inset(9.3)
             make.bottom.equalToSuperview().inset(10)
         }
-        addSubview(userNameLabel)
+        contentCellView.addSubview(userNameLabel)
         userNameLabel.snp.makeConstraints { make in
             make.width.equalTo(89)
             make.height.equalTo(17)
             make.bottom.equalToSuperview().inset(14)
-            make.left.equalTo(userImage.snp.right).offset(8)
+            make.leading.equalTo(userImage.snp.trailing).offset(8)
         }
-        addSubview(foodImage)
+        contentCellView.addSubview(foodImage)
         foodImage.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(9.3)
-            make.top.equalToSuperview()
-            make.width.equalTo(80)
-            make.height.equalTo(86)
+            make.trailing.equalToSuperview().inset(9)
+            make.top.equalTo(contentView)
+            make.width.height.equalTo(80)
         }
-        addSubview(cookingTimeImage)
+        contentCellView.addSubview(cookingTimeImage)
         cookingTimeImage.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(14)
             make.trailing.equalToSuperview().inset(55)
         }
-        addSubview(cookingTimeInMinutesLabel)
+        contentCellView.addSubview(cookingTimeInMinutesLabel)
         cookingTimeInMinutesLabel.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(14)
             make.trailing.equalToSuperview().inset(7)
@@ -174,6 +170,7 @@ final class RecipeCardSmall: UICollectionViewCell {
         }
     }
     
+    //MARK: public func
     func configure(with recipe: NewRecipes) {
         recipeNameLabel.text = recipe.recipeName
         cookingTimeInMinutesLabel.text = "\(recipe.cookingTime) Min"
@@ -181,5 +178,4 @@ final class RecipeCardSmall: UICollectionViewCell {
         foodImage.kf.setImage(with: URL(string: recipe.imageURL))
         userNameLabel.text = recipe.author
     }
-    
 }

@@ -25,11 +25,12 @@ class CustomSegmentedControl: UIView {
     private var buttonsArray = [UIButton]()
     
     init(buttonsArray: [UIButton]) {
+//        init() {
         super.init(frame: .zero)
+        self.buttonsArray = buttonsArray
         setupScrollView()
         setupContentButtons(buttonsArray: buttonsArray)
-
-        self.buttonsArray = buttonsArray
+        
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -100,7 +101,28 @@ class CustomSegmentedControl: UIView {
             make.trailing.equalTo(scrollView.snp.trailing).offset(-16)
         }
         buttonsArray.first?.isSelected = true
+       
     }
+    
+//    @objc private func segmentedValueChanged(_ sender: UIButton, inputRecipeArr: [Recipe]) {
+//        print(sender.titleLabel?.text)      //TODO: to delete
+//             
+//        var cuisine: String //= sender.titleLabel?.text
+//        if cuisine == sender.titleLabel?.text else { return }
+//        
+//        scrollView.scrollRectToVisible(sender.frame, animated: true)
+//        
+//        for button in buttonsArray {
+//            button.isSelected = false
+//            button.backgroundColor = .clear
+//            button.setTitleColor(Constants.Colors.mainColor, for: .normal)
+//        }
+//        sender.isSelected = true
+//        sender.backgroundColor = Constants.Colors.mainColor
+//        sender.setTitleColor(.white, for: .normal)
+//        print("herr118")
+//    }
+    
     
     @objc private func segmentedValueChanged(_ sender: UIButton) {
         print(sender.titleLabel?.text)      //TODO: to delete
@@ -116,4 +138,25 @@ class CustomSegmentedControl: UIView {
         sender.backgroundColor = Constants.Colors.mainColor
         sender.setTitleColor(.white, for: .normal)
     }
+    
+//    func createButtonsForCuisinesButtonScroller(cuisinesNamesArr: [String]) {
+//
+//        var createButtonsForCuisinesButtonScroller = [UIButton]()
+//
+//        print("I print inputAllRecipes count a str 283: \(cuisinesNamesArr.count) & cuisineNames: \(cuisinesNamesArr)")
+//
+//        for cuisine in cuisinesNamesArr {
+//            print("str266")
+//            let button = UIButton()
+//            button.setTitle(cuisine, for: .normal)
+//            createButtonsForCuisinesButtonScroller.append(button)
+//        }
+////        return createButtonsForCuisinesButtonScroller
+//        
+//        
+//        setupContentButtons(buttonsArray: createButtonsForCuisinesButtonScroller)
+//    }
+    
+ 
+   
 }

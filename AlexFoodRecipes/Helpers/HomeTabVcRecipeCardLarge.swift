@@ -1,5 +1,5 @@
 //
-//  RecipeCardLarge.swift
+//  HomeTabVcRecipeCardLarge.swift
 //  AlexFoodRecipes
 //
 //  Created by Alex on 04.10.2024.
@@ -11,7 +11,7 @@ import SnapKit
 import Kingfisher
 
 
-final class RecipeCardLarge: UICollectionViewCell {
+final class HomeTabVcRecipeCardLarge: UICollectionViewCell {
     
     private let recipeCell: UIView = {
         let view = UIView()
@@ -91,7 +91,11 @@ final class RecipeCardLarge: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-    }
+        
+        isSkeletonable = true
+        contentView.isSkeletonable = true
+        skeletonCornerRadius = 10
+     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -25,11 +25,14 @@ extension RequestItem: EndPointType {
     var path: String {
         switch self {
         case .getRecipe:
-            return "api/data/Recipes"
+            return "api/data/Recipes"//?pageSize=30"
         case .getNewRecipes:
             return "api/data/NewRecipesTable"
         }
     }
+    
+    //    https://utmostroll-us.backendless.app/api/data/Recipes?pageSize=50
+//    https://utmostroll-us.backendless.app/api/data/Recipes?pageSize=50
     
     var httpMethod: Alamofire.HTTPMethod {
         switch self {

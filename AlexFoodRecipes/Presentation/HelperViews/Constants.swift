@@ -31,6 +31,8 @@ enum Constants {
     enum FontsColors {
         
         static let fontColorBlack = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
+        static let fontColorCustomBlack = UIColor(red: 18/255, green: 18/255, blue: 18/255, alpha: 1)
+
         
         static let fontColorGrey1 = UIColor(red: 72/255, green: 72/255, blue: 72/255, alpha: 1)
 //        static let fontColorGrey2 = UIColor(red: 193, green: 193, blue: 193, alpha: 1)

@@ -16,6 +16,9 @@ final class Networking: NetworkingProtocol {
             return
         }
         
+        print(request)
+        
+        
         AF.request(request)
             .validate(statusCode: 200...299)
             .responseData { [weak self] (response) in
@@ -51,16 +54,30 @@ final class Networking: NetworkingProtocol {
             guard let self else { return }
             let result = response.result
             var final: Response?
+            
+//            print(result)
+//            print(data)
+
+
             switch result {
             case .success(let data):
-                if Response.self == DataResponse.self, let object = DataResponse(data: data) as? Response {
+                if Response.self == DataResponse.self, let object = DataResponse(data: data)
+                    as? Response {
                     final = object
+                    
+//                    print("68")
+//                    print(object)
+
+//                    print("herr 58")//"data)
                 } else {
                     do {
                         let wrapper = try JSONDecoder().decode(Response.self, from: data)
                         final = wrapper
+//                        print("here 76 I get - \(wrapper)")
+
                     } catch {
-                        print("DECODING crashed")//("DECODING POSHEL PO PIZDE")
+                        print("here I get - \(final)")
+                        print("DECODING crashed 77") //by \(errorDesciption)")//("DECODING POSHEL PO PIZDE")
                         final = nil
                     }
                 }

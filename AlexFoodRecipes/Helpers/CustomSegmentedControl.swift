@@ -10,7 +10,15 @@ import UIKit
 import SnapKit
 
 
+protocol ShowCuisineProtocol {
+    
+    func showChosenCuisine(chosenCuisine: String)
+    
+}
+
 class CustomSegmentedControl: UIView {
+    
+    var showCuisineDelegate: ShowCuisineProtocol?
     
     var previousIndex = 0
     
@@ -19,19 +27,24 @@ class CustomSegmentedControl: UIView {
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .clear
         scrollView.bounces = scrollView.contentOffset.x > 100
-
+        
         return scrollView
     }()
     private var buttonsArray = [UIButton]()
     
     init(buttonsArray: [UIButton]) {
-//        init() {
+        //        init() {
         super.init(frame: .zero)
         self.buttonsArray = buttonsArray
         setupScrollView()
         setupContentButtons(buttonsArray: buttonsArray)
         
     }
+    
+//    convenience init() {
+//            self.init()
+//        }
+    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -71,7 +84,7 @@ class CustomSegmentedControl: UIView {
         for button in buttonsArray {
             button.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .touchUpInside)
             button.contentEdgeInsets = UIEdgeInsets(top: 7, left: 20, bottom: 7, right: 20)
-    
+            
             if button != buttonsArray.first {
                 button.backgroundColor = .clear
                 let customColor: UIColor = Constants.Colors.mainColor
@@ -101,32 +114,24 @@ class CustomSegmentedControl: UIView {
             make.trailing.equalTo(scrollView.snp.trailing).offset(-16)
         }
         buttonsArray.first?.isSelected = true
-       
+        
+        
     }
-    
-//    @objc private func segmentedValueChanged(_ sender: UIButton, inputRecipeArr: [Recipe]) {
-//        print(sender.titleLabel?.text)      //TODO: to delete
-//             
-//        var cuisine: String //= sender.titleLabel?.text
-//        if cuisine == sender.titleLabel?.text else { return }
-//        
-//        scrollView.scrollRectToVisible(sender.frame, animated: true)
-//        
-//        for button in buttonsArray {
-//            button.isSelected = false
-//            button.backgroundColor = .clear
-//            button.setTitleColor(Constants.Colors.mainColor, for: .normal)
-//        }
-//        sender.isSelected = true
-//        sender.backgroundColor = Constants.Colors.mainColor
-//        sender.setTitleColor(.white, for: .normal)
-//        print("herr118")
-//    }
     
     
     @objc private func segmentedValueChanged(_ sender: UIButton) {
-        print(sender.titleLabel?.text)      //TODO: to delete
-                
+        //        print(sender.titleLabel?.text)      //TODO: to delete
+        
+        guard let chosenCuisine: String = sender.title(for: .normal) else { return }
+        print(chosenCuisine + " cuisine choosed. Control str121")
+//        sendChosenCuisine(chosenCuisine: chosenCuisine)
+//        showCuisineDelegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
+        showCuisineDelegate?.showChosenCuisine(chosenCuisine: "herr")
+
+        
+        
+        
+        
         scrollView.scrollRectToVisible(sender.frame, animated: true)
         
         for button in buttonsArray {
@@ -139,24 +144,12 @@ class CustomSegmentedControl: UIView {
         sender.setTitleColor(.white, for: .normal)
     }
     
-//    func createButtonsForCuisinesButtonScroller(cuisinesNamesArr: [String]) {
-//
-//        var createButtonsForCuisinesButtonScroller = [UIButton]()
-//
-//        print("I print inputAllRecipes count a str 283: \(cuisinesNamesArr.count) & cuisineNames: \(cuisinesNamesArr)")
-//
-//        for cuisine in cuisinesNamesArr {
-//            print("str266")
-//            let button = UIButton()
-//            button.setTitle(cuisine, for: .normal)
-//            createButtonsForCuisinesButtonScroller.append(button)
-//        }
-////        return createButtonsForCuisinesButtonScroller
-//        
-//        
-//        setupContentButtons(buttonsArray: createButtonsForCuisinesButtonScroller)
-//    }
+    private func sendChosenCuisine(chosenCuisine: String) {
+        
+        showCuisineDelegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
+        
     
- 
-   
+    }
+    
+    
 }

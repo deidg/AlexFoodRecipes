@@ -9,12 +9,17 @@ import Foundation
 import UIKit
 
 class HomeTabPresenter: PresenterType, HomeTabModuleInput {
+    
+    
     typealias ModuleOutput = HomeTabModuleOutput
     
     weak var moduleOutput: HomeTabModuleOutput?
     weak var view: HomeTabViewInput?
     var router: HomeTabRouterInput!
     var interactor: HomeTabInteractorInput!
+    
+//    let customSegmentedControl = CustomSegmentedControl()
+//    customSegmentedControl.delegate = self
     
    
     func handleTimeOutNotificationUpdate() {
@@ -35,6 +40,17 @@ class HomeTabPresenter: PresenterType, HomeTabModuleInput {
         view?.sendCusisineArray(cuisinesNamesArr: cuisinesNamesArr)
 
     }
+    
+//    func showChosenCuisine(chosenCuisine: String) {
+//        print("переданное имя - \(chosenCuisine)")
+//    }
+    
+    
+//    private func filterForCuisine(allrecipes: [Recipe], chosenCuisine: String) {
+//        
+//        var filtredArrayByCuisine: [Recipe] = allrecipes.filter { $0.cuisine == chosenCuisine }
+//        
+//    }
     
     
 }

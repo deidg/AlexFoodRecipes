@@ -9,4 +9,14 @@ import Foundation
 
 protocol HomeTabViewOutput: AnyViewOutput {
     
+    var allRecipes: [Recipe] { get }
+    var newRecipes: [NewRecipes] { get }
+    var filteredRecipesByChosenCuisine: [Recipe] { get }
+    
+    func filterRecipeResultsByCuisine(_ cuisine: String)
+    
 }
+
+
+
+// метод называть так что должен сделать презентер

@@ -12,28 +12,30 @@
     import SkeletonView
 
 
-    final class HomeTabVC: BaseViewController<HomeTabViewOutput>, ShowCuisineProtocol {
+    final class HomeTabVC: BaseViewController<HomeTabViewOutput>, CustomSegmentedControlDelegate {
         func showChosenCuisine(chosenCuisine: String) {
-            print("str17")
+//            print("str17")
 //            print("переданное имя str17 - \(chosenCuisine)")
+            
+            
+            presenter?.filterRecipeResultsByCuisine(chosenCuisine)
+            
         }
         
         
         enum State {
             case initial
             case skeletonable
-            case result(allRecipes: [Recipe], newRecipes: [NewRecipes])
+            case result
         }
         
         
         //TODO: to orginize elements order
         
-        private var allRecipes: [Recipe] = []
-    //    private var cuisineRecipesArray: [String] = [] //[All]
-        private var newRecipes: [NewRecipes] = []
         
         
-    //    private let segmentedControl = CustomSegmentedControl()
+        
+//        private let segmentedControl = CustomSegmentedControl()
         
         private var state: State = .initial {
             didSet {
@@ -44,11 +46,10 @@
                 case .skeletonable:
                     print("str31")
                     showSkeletons()
-                case .result(let allRecipes, let newRecipes):
+                case .result:
                     print("str41")
                     
-                    self.allRecipes = allRecipes
-                    self.newRecipes = newRecipes
+                    
                     
                     self.allRecipesCollectionView.reloadData()
                     self.newRecipesCollectionView.reloadData()
@@ -156,6 +157,7 @@
 //            let csc = CustomSegmentedControl(buttonsArray: allRecipes)
 //            csc.delegate = self
             
+//            self.delegate
             
     //        delegator.delegate = self
             
@@ -246,6 +248,8 @@
         private func setupCustomSegmentedControl(buttons: [UIButton]) {
             let cuisinesButtonScroller = CustomSegmentedControl(buttonsArray: buttons)
             
+            cuisinesButtonScroller.delegate = self
+            
             view.addSubview(cuisinesButtonScroller)
             cuisinesButtonScroller.snp.makeConstraints { make in
                 make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
@@ -328,34 +332,36 @@
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             if collectionView == allRecipesCollectionView {
-                return allRecipes.count //1 // by presenter. data counter   iintercator - api -> presenter
+                return presenter?.filteredRecipesByChosenCuisine.count ?? 0
             } else if collectionView == newRecipesCollectionView {
-                return allRecipes.count  //1 //newRecipesData.count
+                return presenter?.newRecipes.count ?? 0
             }
             return 0
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             if collectionView == allRecipesCollectionView {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardLarge", for: indexPath) as? HomeTabVcRecipeCardLarge else {
+                guard let presenter,
+                      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardLarge", for: indexPath) as? HomeTabVcRecipeCardLarge else {
                     return UICollectionViewCell()
                 }
-                cell.configure(with: allRecipes[indexPath.item])
+                cell.configure(with: presenter.filteredRecipesByChosenCuisine[indexPath.item])
                 return cell
             } else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardSmall", for: indexPath) as? HomeTabVcRecipeCardSmall else {
+                guard let presenter,
+                      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardSmall", for: indexPath) as? HomeTabVcRecipeCardSmall else {
                     return UICollectionViewCell()
                 }
-                cell.configure(with: newRecipes[indexPath.item])
+                cell.configure(with: presenter.newRecipes[indexPath.item])
                 return cell
             }
         }
         
-        func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-            if indexPath.item == allRecipes.count - 1, currentPage < totalPages {
-                loadData()
-            }
-        }
+//        func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//            if indexPath.item == allRecipes.count - 1, currentPage < totalPages {
+//                loadData()
+//            }
+//        }
         
     }
 

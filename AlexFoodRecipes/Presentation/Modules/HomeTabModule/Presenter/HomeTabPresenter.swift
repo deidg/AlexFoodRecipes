@@ -18,6 +18,11 @@ class HomeTabPresenter: PresenterType, HomeTabModuleInput {
     var router: HomeTabRouterInput!
     var interactor: HomeTabInteractorInput!
     
+    var allRecipes: [Recipe] = []
+    var newRecipes: [NewRecipes] = []
+    var filteredRecipesByChosenCuisine: [Recipe] = []
+    
+    
 //    let customSegmentedControl = CustomSegmentedControl()
 //    customSegmentedControl.delegate = self
     
@@ -55,6 +60,21 @@ class HomeTabPresenter: PresenterType, HomeTabModuleInput {
     
 }
 extension HomeTabPresenter: HomeTabViewOutput {
+    func filterRecipeResultsByCuisine(_ cuisine: String) {
+        
+        if cuisine == "All" {
+            
+            filteredRecipesByChosenCuisine = allRecipes
+        } else {
+            
+            filteredRecipesByChosenCuisine = allRecipes.filter { $0.cuisine == cuisine }
+            
+            print (filteredRecipesByChosenCuisine)
+            
+        }
+        view?.populateWith(state: .result)
+    }
+    
     func onViewDidLoad() {
 //        interactor.getAllRecipes()
 //        interactor.getNewRecipes()
@@ -68,18 +88,18 @@ extension HomeTabPresenter: HomeTabInteractorOutput {
     
     
 //    func proceedResultForAllRecipes(_ recipes: [Recipe]) {
-    func proceedResultRecipes(_ recipes: [Recipe], _ newRecipes: [NewRecipes]) {
-        view?.populateWith(state: .result(allRecipes: recipes, newRecipes: newRecipes))
+    func proceedResultRecipes(_ allRecipes: [Recipe], _ newRecipes: [NewRecipes]) {
+        view?.populateWith(state: .result)
         
-        filterRecipesToCuisines(allRecipes: recipes)
+        self.allRecipes = allRecipes
+        filteredRecipesByChosenCuisine = allRecipes
+
+        self.newRecipes = newRecipes
+        
+        filterRecipesToCuisines(allRecipes: allRecipes)
     
     }
-    
-//    func proceedResultForNewRecipes(_ newRecipes: [NewRecipes]) {
-//        view?.populateWithNewRecipes(state: .newRecipesResult(newRecipes: newRecipes))
-//    }
-    
-   
+
 }
 
 

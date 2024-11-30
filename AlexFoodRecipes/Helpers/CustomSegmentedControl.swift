@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 
-protocol ShowCuisineProtocol {
+protocol CustomSegmentedControlDelegate: AnyObject {
     
     func showChosenCuisine(chosenCuisine: String)
     
@@ -18,7 +18,7 @@ protocol ShowCuisineProtocol {
 
 class CustomSegmentedControl: UIView {
     
-    var showCuisineDelegate: ShowCuisineProtocol?
+    weak var delegate: CustomSegmentedControlDelegate?
     
     var previousIndex = 0
     
@@ -125,12 +125,8 @@ class CustomSegmentedControl: UIView {
         guard let chosenCuisine: String = sender.title(for: .normal) else { return }
         print(chosenCuisine + " cuisine choosed. Control str121")
 //        sendChosenCuisine(chosenCuisine: chosenCuisine)
-//        showCuisineDelegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
-        showCuisineDelegate?.showChosenCuisine(chosenCuisine: "herr")
+        delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
 
-        
-        
-        
         
         scrollView.scrollRectToVisible(sender.frame, animated: true)
         
@@ -146,7 +142,7 @@ class CustomSegmentedControl: UIView {
     
     private func sendChosenCuisine(chosenCuisine: String) {
         
-        showCuisineDelegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
+        delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
         
     
     }

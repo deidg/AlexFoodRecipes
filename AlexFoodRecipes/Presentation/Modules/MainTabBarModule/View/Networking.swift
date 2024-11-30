@@ -15,10 +15,6 @@ final class Networking: NetworkingProtocol {
             handler.perform(with: nil)
             return
         }
-        
-        print(request)
-        
-        
         AF.request(request)
             .validate(statusCode: 200...299)
             .responseData { [weak self] (response) in
@@ -47,42 +43,27 @@ final class Networking: NetworkingProtocol {
             }
     }
     
-    
-    
     private func proceedResultForAllRecipes<Response: Codable>(endPoint: EndPointType, response: Alamofire.DataResponse<Data, AFError>, handler: @escaping (Response?) -> Void) {
         DispatchQueue.global(qos: .utility).async { [weak self] in
             guard let self else { return }
             let result = response.result
             var final: Response?
-            
-//            print(result)
-//            print(data)
-
-
+ 
             switch result {
             case .success(let data):
                 if Response.self == DataResponse.self, let object = DataResponse(data: data)
                     as? Response {
                     final = object
-                    
-//                    print("68")
-//                    print(object)
 
-//                    print("herr 58")//"data)
                 } else {
                     do {
                         let wrapper = try JSONDecoder().decode(Response.self, from: data)
                         final = wrapper
-//                        print("here 76 I get - \(wrapper)")
-
                     } catch {
-                        print("here I get - \(final)")
-                        print("DECODING crashed 77") //by \(errorDesciption)")//("DECODING POSHEL PO PIZDE")
                         final = nil
                     }
                 }
             case .failure(let error):
-                //TODO: Error handling
                 final = nil
             }
             handler(final)
@@ -103,12 +84,10 @@ final class Networking: NetworkingProtocol {
                         let wrapper = try JSONDecoder().decode(Response.self, from: data)
                         final = wrapper
                     } catch {
-                        print("DECODING crashed 89")//("DECODING POSHEL PO PIZDE")
                         final = nil
                     }
                 }
             case .failure(let error):
-                //TODO: Error handling
                 final = nil
             }
             handler(final)
@@ -127,8 +106,7 @@ final class Networking: NetworkingProtocol {
         do {
             var headers = endPoint.headers ?? [:]
             var endpointURL = endPoint.url.absoluteString
-            
-            // if endpointURL has "%253F" we force changing url to "%3F" because Alamofire Lib. is adding spec Symbols (Google it please!)
+        
             if endpointURL.contains("%253F") {
                 let newURL = endpointURL.replacingOccurrences(of: "%253F", with: "%3F")
                 endpointURL = newURL
@@ -150,7 +128,6 @@ final class Networking: NetworkingProtocol {
     private func isTokenNeeded(url: String, method: HTTPMethod, headers: HTTPHeaders) -> URLRequest {
         
         var finalURLRequest = URLRequest(url: URL(fileURLWithPath: ""))
-        // Original Logic
         var myURL = url
         let resultURL = eliminateSymbolsFromURLIfNeeded(from: &myURL)
         do {
@@ -159,13 +136,10 @@ final class Networking: NetworkingProtocol {
         } catch {
             print("Api error")
         }
-        
-        // Mock URL
         return finalURLRequest
     }
     
     private func eliminateSymbolsFromURLIfNeeded(from url: inout String) -> String {
-        // if endpointURL has "%253F" we force changing url to "%3F" because Alamofire Lib. is adding spec Symbols (Google it please!)
         if url.contains("%253F") {
             url = url.replacingOccurrences(of: "%253F", with: "%3F")
             return url

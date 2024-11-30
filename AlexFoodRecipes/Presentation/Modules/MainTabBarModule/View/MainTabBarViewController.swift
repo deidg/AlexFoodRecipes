@@ -78,7 +78,7 @@ class MainTabBarViewController: UITabBarController, AnyViewController {
         addRecipeButton.isEnabled = true
     }
     private func setupCustomTabItems() {
-      let homeTabVC = Dependencies.shared.initModule(type: HomeTabModule.self).viewController!
+        let homeTabVC = Dependencies.shared.initModule(type: HomeTabModule.self).viewController!
         let favouritesTabVC = UINavigationController(rootViewController: FavouritesTab())
         let notificationsTabVC = UINavigationController(rootViewController: NotificationsTabVC())
         let accountTabVC = UINavigationController(rootViewController: AccountTabVC())
@@ -104,7 +104,6 @@ class MainTabBarViewController: UITabBarController, AnyViewController {
         addRecipeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     @objc private func buttonPressed() {
-        print("herr")
     }
 }
 extension UIImage {
@@ -116,5 +115,5 @@ extension UIImage {
 }
 
 extension MainTabBarViewController: MainTabBarViewInput {
-  
+    
 }

@@ -33,18 +33,11 @@ class CustomSegmentedControl: UIView {
     private var buttonsArray = [UIButton]()
     
     init(buttonsArray: [UIButton]) {
-        //        init() {
         super.init(frame: .zero)
         self.buttonsArray = buttonsArray
         setupScrollView()
         setupContentButtons(buttonsArray: buttonsArray)
-        
     }
-    
-//    convenience init() {
-//            self.init()
-//        }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -55,7 +48,7 @@ class CustomSegmentedControl: UIView {
     
     private func checkContentFit() {
         let doesContentFit = scrollView.contentSize.width + 32 <= bounds.width
-        
+
         scrollView.snp.remakeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -114,19 +107,11 @@ class CustomSegmentedControl: UIView {
             make.trailing.equalTo(scrollView.snp.trailing).offset(-16)
         }
         buttonsArray.first?.isSelected = true
-        
-        
     }
     
-    
     @objc private func segmentedValueChanged(_ sender: UIButton) {
-        //        print(sender.titleLabel?.text)      //TODO: to delete
-        
         guard let chosenCuisine: String = sender.title(for: .normal) else { return }
-        print(chosenCuisine + " cuisine choosed. Control str121")
-//        sendChosenCuisine(chosenCuisine: chosenCuisine)
         delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
-
         
         scrollView.scrollRectToVisible(sender.frame, animated: true)
         
@@ -140,12 +125,7 @@ class CustomSegmentedControl: UIView {
         sender.setTitleColor(.white, for: .normal)
     }
     
-    private func sendChosenCuisine(chosenCuisine: String) {
-        
+    private func sendChosenCuisine(chosenCuisine: String) {        
         delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
-        
-    
-    }
-    
-    
+        }
 }

@@ -12,7 +12,6 @@ enum RequestItem {
     case getRecipe
     case getNewRecipes
 }
-// https://utmostroll-us.backendless.app/api/data/NewRecipesTable
 
 extension RequestItem: EndPointType {
     var baseURL: String {
@@ -25,15 +24,12 @@ extension RequestItem: EndPointType {
     var path: String {
         switch self {
         case .getRecipe:
-            return "api/data/Recipes"//?pageSize=30"
+            return "api/data/Recipes"
         case .getNewRecipes:
             return "api/data/NewRecipesTable"
         }
     }
-    
-    //    https://utmostroll-us.backendless.app/api/data/Recipes?pageSize=50
-//    https://utmostroll-us.backendless.app/api/data/Recipes?pageSize=50
-    
+        
     var httpMethod: Alamofire.HTTPMethod {
         switch self {
         case .getRecipe, .getNewRecipes:
@@ -58,7 +54,7 @@ extension RequestItem: EndPointType {
     
     var url: URL {
         switch self {
-        case .getRecipe: //, //.getNewRecipes:
+        case .getRecipe:
             var urlString = self.baseURL + self.path
             urlString = urlString.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
             let url = URL(string: urlString)
@@ -73,7 +69,6 @@ extension RequestItem: EndPointType {
             return url!
         }
     }
-//    }
     
     var encoding: Alamofire.ParameterEncoding {
         switch self {
@@ -87,7 +82,7 @@ extension RequestItem: EndPointType {
         case .getRecipe, .getNewRecipes:
             return .none
         }
-    }
-    
-    
+    }   
 }
+
+//    https://utmostroll-us.backendless.app/api/data/Recipes?pageSize=50

@@ -19,4 +19,3 @@ protocol HomeTabViewOutput: AnyViewOutput {
 
 
 
-// метод называть так что должен сделать презентер

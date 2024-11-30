@@ -34,8 +34,7 @@ class HomeTabInteractor: InteractorType, HomeTabInteractorInput {
             guard let newRecipes, let self else { return }
             newRecipesArr = newRecipes
             dispatchGroup.leave()
-        }
-                                                         ))
+        }))
         dispatchGroup.notify(queue: .main) { [weak self] in
             self?.output?.proceedResultRecipes(recipesArr, newRecipesArr)
         }

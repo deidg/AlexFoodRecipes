@@ -11,19 +11,19 @@ import Foundation
 import UIKit
 
 protocol SkeletonDisplayable {
+    
     func showSkeleton()
     func hideSkeleton()
+    
 }
 
 extension SkeletonDisplayable where Self: UIViewController {
     var skeletonLayerName: String {
         return "skeletonLayerName"
     }
-
     var skeletonGradientName: String {
         return "skeletonGradientName"
     }
-
     private func skeletonViews(in view: UIView) -> [UIView] {
         var results = [UIView]()
         for subview in view.subviews as [UIView] {
@@ -40,7 +40,6 @@ extension SkeletonDisplayable where Self: UIViewController {
         }
         return results
     }
-
     func showSkeleton() {
         let skeletons = skeletonViews(in: view)
         let backgroundColor = UIColor(red: 210.0/255.0, green: 210.0/255.0, blue: 210.0/255.0, alpha: 1.0).cgColor
@@ -77,7 +76,6 @@ extension SkeletonDisplayable where Self: UIViewController {
             gradientLayer.add(animation, forKey: "gradientLayerShimmerAnimation")
         }
     }
-
     func hideSkeleton() {
         skeletonViews(in: view).forEach {
             $0.layer.sublayers?.removeAll {

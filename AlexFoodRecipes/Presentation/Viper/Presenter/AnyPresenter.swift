@@ -8,12 +8,15 @@
 import Foundation
 
 protocol AnyPresenter: AnyObject, RouterProvider {
+    
 //  var alertService: AlertServiceInput! { get set }
 }
 
 extension AnyPresenter where Self: PresenterType {
+    
   func getRouter() -> BaseRouter {
     guard let router = self.router as? BaseRouter else { fatalError() }
     return router
   }
+    
 }

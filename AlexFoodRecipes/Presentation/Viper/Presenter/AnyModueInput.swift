@@ -8,9 +8,11 @@
 import Foundation
 
 protocol AnyModuleInput: AnyObject {
+    
   associatedtype ModuleOutput
   /// Set module output for the current module
   ///
   /// - Parameter moduleOutput: ModuleOutput instance
   func setModuleOutput(_ moduleOutput: ModuleOutput)
+    
 }

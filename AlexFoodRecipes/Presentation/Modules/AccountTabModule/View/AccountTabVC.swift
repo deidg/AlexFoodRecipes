@@ -12,8 +12,6 @@ import Kingfisher
 import SkeletonView
 
 
-//TODO: спросить кто то как организовать  стеквью с лейблами.
-
 final class AccountTabVC: UIViewController {
     
     //    profileLabel

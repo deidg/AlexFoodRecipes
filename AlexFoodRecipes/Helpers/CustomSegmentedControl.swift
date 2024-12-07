@@ -19,9 +19,7 @@ protocol CustomSegmentedControlDelegate: AnyObject {
 class CustomSegmentedControl: UIView {
     
     weak var delegate: CustomSegmentedControlDelegate?
-    
     var previousIndex = 0
-    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
@@ -63,14 +61,12 @@ class CustomSegmentedControl: UIView {
             }
         }
     }
-    
     private func setupScrollView() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
-    
     private func setupContentButtons(buttonsArray: [UIButton]) {
         var previousButton: UIButton?
         
@@ -108,7 +104,6 @@ class CustomSegmentedControl: UIView {
         }
         buttonsArray.first?.isSelected = true
     }
-    
     @objc private func segmentedValueChanged(_ sender: UIButton) {
         guard let chosenCuisine: String = sender.title(for: .normal) else { return }
         delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
@@ -123,8 +118,7 @@ class CustomSegmentedControl: UIView {
         sender.isSelected = true
         sender.backgroundColor = Constants.Colors.mainColor
         sender.setTitleColor(.white, for: .normal)
-    }
-    
+    }    
     private func sendChosenCuisine(chosenCuisine: String) {        
         delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
         }

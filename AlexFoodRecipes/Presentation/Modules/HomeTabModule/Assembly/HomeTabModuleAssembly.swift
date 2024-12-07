@@ -18,4 +18,5 @@ class HomeTabModuleAssembly: BaseModuleAssembly {
                 $1.recipesRepository = $0.resolve(RecipeRepositoryInput.self)                
             })
     }
+    
 }

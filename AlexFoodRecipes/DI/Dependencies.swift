@@ -26,4 +26,5 @@ final class Dependencies {
         let assembler = Assembler([M.ModuleAssemblyType()], parent: modulesAssembler)
         return assembler.resolver.resolve(M.self, name: name)!
     }
+    
 }

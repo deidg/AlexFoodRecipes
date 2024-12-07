@@ -13,7 +13,7 @@ import Kingfisher
 final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
     private let contentCellView: UIView = {
         let view = UIView()
-        view.backgroundColor = .white //.green//.white
+        view.backgroundColor = .white
         view.clipsToBounds = false
         view.layer.shadowColor = UIColor.blue.cgColor
         view.layer.shadowOffset = .zero
@@ -22,7 +22,6 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
         view.layer.cornerRadius = 10
         return view
     }()
-    
     private let recipeNameLabel: UILabel = {
         let label = UILabel()
         label.text = "Steak with tomatoes"
@@ -48,14 +47,12 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
         userImage.frame = CGRect(x: 0, y: 0, width: 25, height: 25)
         return userImage
     }()
-    
     private let userNameLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.Fonts.mainFont
         label.textColor = Constants.FontsColors.fontColorGrey3
         return label
     }()
-    
     private let foodImage: UIImageView = {
         let image = UIImageView()
 //        image.image = UIImage(named: "newRecipeImage")
@@ -63,7 +60,6 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
         image.clipsToBounds = true
         return image
     }()
-    
     private let cookingTimeInMinutesLabel: UILabel = {
         let label = UILabel()
         label.font = Constants.Fonts.mainFont
@@ -72,7 +68,6 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
         label.frame.size.width = 43
       return label
     }()
-    
     private let cookingTimeImage: UIImageView = {
         let cookingTimeImage = UIImageView()
         cookingTimeImage.image = UIImage(named: "cookingTimeImage")
@@ -83,12 +78,10 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
-//        contentView.isSkeletonable = true
+        
         isSkeletonable = true
         skeletonCornerRadius = 10
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -96,7 +89,6 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
     private func setupUI() {
         contentView.addSubview(contentCellView)
         contentCellView.snp.makeConstraints { make in
-            //            make.width.equalTo(251)   //canceled do tu bugfixed (extra)
             make.height.equalTo(95)
             make.leading.equalToSuperview().inset(12)  // отступ для тени
             make.trailing.bottom.equalToSuperview()
@@ -143,16 +135,13 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
             make.trailing.equalToSuperview().inset(7)
         }
     }
-    
-    //MARK: Private funcions
+    //MARK: Private methods
     private func showCookingTimeInMinutes(minutes: Int) {
         cookingTimeInMinutesLabel.text = "\(minutes) mins"
     }
-    
     private func showUserName(name: String) {
         userNameLabel.text = "By \(name)"
     }
-    
     private func showRatingStars(recipeRating: Int) {
         for _ in 0..<5 {
             let starImage = UIImage(named: "RecipeCard_star")
@@ -169,8 +158,7 @@ final class HomeTabVcRecipeCardSmall: UICollectionViewCell {
             }
         }
     }
-    
-    //MARK: public func
+    //MARK: public methods
     func configure(with recipe: NewRecipes) {
         recipeNameLabel.text = recipe.recipeName
         cookingTimeInMinutesLabel.text = "\(recipe.cookingTime) Min"

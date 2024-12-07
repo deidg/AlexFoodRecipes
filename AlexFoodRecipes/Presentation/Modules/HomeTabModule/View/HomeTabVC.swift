@@ -12,13 +12,8 @@ import SnapKit
 import SkeletonView
 
 
-final class HomeTabVC: BaseViewController<HomeTabViewOutput>, CustomSegmentedControlDelegate {
-    func showChosenCuisine(chosenCuisine: String) {
-        
-        presenter?.filterRecipeResultsByCuisine(chosenCuisine)
-        
-    }
-   
+final class HomeTabVC: BaseViewController<HomeTabViewOutput>  {
+
     enum State {
         case initial
         case skeletonable
@@ -40,9 +35,8 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput>, CustomSegmentedCon
             }
         }
     }
-    
-    var currentPage = 1
-    var totalPages = 1
+    private var currentPage = 1
+    private var totalPages = 1
     
     private var allRecipesCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -142,6 +136,7 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput>, CustomSegmentedCon
     private func setupUI() {
         view.backgroundColor = .white
         navigationController?.setNavigationBarHidden(true, animated: false)
+        
         view.addSubview(greetingsLabelsStackView)
         greetingsLabelsStackView.snp.makeConstraints { make in
             make.top.equalTo(view).offset(64)
@@ -215,17 +210,14 @@ final class HomeTabVC: BaseViewController<HomeTabViewOutput>, CustomSegmentedCon
         }
         setupCustomSegmentedControl(buttons: listOfCuisineNames)
     }    
-    
+    // - MARK: OBJC methods
     @objc func loadData() {
         currentPage += 1
         
         allRecipesCollectionView.reloadData()
-        
     }
 }
-
 extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource, SkeletonCollectionViewDataSource {
-    
     func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
         if skeletonView == allRecipesCollectionView {
             return "HomeTabVcRecipeCardLarge"
@@ -233,11 +225,9 @@ extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource, Skele
             return "HomeTabVcRecipeCardSmall"
         }
     }
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == allRecipesCollectionView {
             return presenter?.filteredRecipesByChosenCuisine.count ?? 0
@@ -246,7 +236,6 @@ extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource, Skele
         }
         return 0
     }
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == allRecipesCollectionView {
             guard let presenter,
@@ -267,19 +256,29 @@ extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource, Skele
 }
 
 extension HomeTabVC: HomeTabViewInput {
-    
     func sendCusisineArray(cuisinesNamesArr: [String]) {
         
         createButtonsForCuisinesButtonScroller(cuisinesNamesArr: cuisinesNamesArr)
         
     }
-    
     func populateWith(state: State) {
+        
         self.state = state
+        
     }
     func populateWithNewRecipes(state: State) {
+        
         self.state = state
+        
     }
+}
+
+extension HomeTabVC: CustomSegmentedControlDelegate {
+    func showChosenCuisine(chosenCuisine: String) {
+   
+           presenter?.filterRecipeResultsByCuisine(chosenCuisine)
+   
+       }
 }
 
 

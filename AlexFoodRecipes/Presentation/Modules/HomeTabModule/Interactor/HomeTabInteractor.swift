@@ -15,7 +15,6 @@ class HomeTabInteractor: InteractorType, HomeTabInteractorInput {
     required init() {}
     
     func getRecipes() {
-        
         let dispatchGroup = DispatchGroup()
         
         var recipesArr: [Recipe] = []

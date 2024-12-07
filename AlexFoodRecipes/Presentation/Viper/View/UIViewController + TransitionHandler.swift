@@ -13,7 +13,6 @@ extension UIViewController: TransitionHandler {
         guard let navController = navigationController else { return }
         navController.pushViewController(vc, animated: true)
     }
-    
     func pushModule<M>(moduleType: M.Type,
                        swinjectName: String? = nil,
                        setup: ModuleSetup<M>? = nil) where M: AnyModule {
@@ -21,7 +20,6 @@ extension UIViewController: TransitionHandler {
         let vc = setupModuleAndViewController(moduleType: moduleType, swinjectName: swinjectName, setup: setup)
         navController.pushViewController(vc, animated: true)
     }
-    
     func presentModule<M>(moduleType: M.Type,
                           swinjectName: String? = nil,
                           animateSubtype: CATransitionSubtype? = nil,
@@ -36,7 +34,6 @@ extension UIViewController: TransitionHandler {
         }
         present(vc, animated: animateSubtype == nil, completion: nil)
     }
-    
     func closeModule(completion: Command<Void>?) {
         DispatchQueue.main.async { [weak self] in
             if self?.presentingViewController != nil {
@@ -57,7 +54,6 @@ extension UIViewController: TransitionHandler {
             }
         }
     }
-    
     func closeModuleWithoutAnimation(completion: Command<Void>?) {
         DispatchQueue.main.async { [weak self] in
             if self?.presentingViewController != nil {
@@ -74,9 +70,7 @@ extension UIViewController: TransitionHandler {
                     completion?.perform()
                 }
             } else {
-                return
-                
-                
+                return                            
             }
         }
     }

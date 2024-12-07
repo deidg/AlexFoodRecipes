@@ -11,6 +11,7 @@ import UIKit
 typealias ModuleSetup<M: AnyModule> = (M.ModuleInputType) -> Void
 
 protocol TransitionHandler: AnyObject {
+    
     func push(vc: UIViewController)
     func pushModule<M: AnyModule>(moduleType: M.Type, swinjectName: String?, setup: ModuleSetup<M>?)
     func presentModule<M: AnyModule>(moduleType: M.Type,
@@ -19,4 +20,5 @@ protocol TransitionHandler: AnyObject {
                                      setup: ModuleSetup<M>?)
     func closeModule(completion: Command<Void>?)
     func closeModuleWithoutAnimation(completion: Command<Void>?)
+    
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class HomeTabPresenter: PresenterType, HomeTabModuleInput {
     
-    
     typealias ModuleOutput = HomeTabModuleOutput
     
     weak var moduleOutput: HomeTabModuleOutput?
@@ -62,6 +61,7 @@ extension HomeTabPresenter: HomeTabInteractorOutput {
         
         filterRecipesToCuisines(allRecipes: allRecipes)    
     }
+    
 }
 
 

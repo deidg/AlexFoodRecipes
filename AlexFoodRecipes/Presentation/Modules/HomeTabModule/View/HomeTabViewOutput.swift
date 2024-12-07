@@ -13,7 +13,7 @@ protocol HomeTabViewOutput: AnyViewOutput {
     var newRecipes: [NewRecipes] { get }
     var filteredRecipesByChosenCuisine: [Recipe] { get }
     
-    func filterRecipeResultsByCuisine(_ cuisine: String)
+    func filterRecipeResultsByCuisine(_ cuisine: String)    
     
 }
 

@@ -22,27 +22,20 @@ class BaseViewController<P>: UIViewController, AnyViewController {
         super.viewDidLoad()
         viewOutput.onViewDidLoad()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewOutput.onViewWillAppear()
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         viewOutput.onViewDidAppear()
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         viewOutput.onViewWillDisappear()
     }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         viewOutput.onViewDidDisappear()
-    }
-    
-    
-    
+    }    
 }

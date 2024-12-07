@@ -14,7 +14,9 @@ protocol AnyViewController: AnyViewInput where Self: UIViewController {
 }
 
 extension AnyViewController {
+    
   func setPresenter(_ presenter: Presenter) {
     self.presenter = presenter
   }
+    
 }

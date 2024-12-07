@@ -7,17 +7,23 @@
 
 import Foundation
 
+
 struct RecipeRepository: RecipeRepositoryInput {
     let networking: NetworkingProtocol
+  
+  init(networking: NetworkingProtocol) {
+    self.networking = networking
+  }
     
     func fetchRecipes(handler: Command<[Recipe]?>) {
         let endpoint = RequestItem.getRecipe
-        networking.sendRequest(endPointItem: endpoint, handler: handler)
+        networking.sendRequestForAllRecipes(endPointItem: endpoint, handler: handler)
     }
-    
+    func fetchNewRecipes(handler: Command<[NewRecipes]?>) {   //<[Recipe]?>) {
+        let endpoint = RequestItem.getNewRecipes
+        networking.sendRequestForNewRecipes(endPointItem: endpoint, handler: handler)
+    }
     func cancelAllTaskInRecipeRepository() {
         networking.cancelAllTasksNetworkingAF()
     }
-    
-    
 }

@@ -14,6 +14,7 @@ class BaseModule<
   R: BaseRouter,
   ModuleInput,
   ModuleAssembly: BaseModuleAssembly>: AnyModule {
+    var storyboardID: String { return "" }
   
   typealias View = V
   typealias Interactor = I

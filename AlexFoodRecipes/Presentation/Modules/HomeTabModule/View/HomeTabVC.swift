@@ -1,3 +1,4 @@
+
 //
 //  HomeTabVC.swift
 //  AlexFoodRecipes
@@ -8,8 +9,51 @@
 import Foundation
 import UIKit
 import SnapKit
+import SkeletonView
 
-final class HomeTabVC: UIViewController {
+
+final class HomeTabVC: BaseViewController<HomeTabViewOutput>  {
+
+    enum State {
+        case initial
+        case skeletonable
+        case result
+    }
+    
+    private var state: State = .initial {
+        didSet {
+            switch state {
+            case .initial:
+                hideSkeletons()
+            case .skeletonable:
+                showSkeletons()
+            case .result:
+                self.allRecipesCollectionView.reloadData()
+                self.newRecipesCollectionView.reloadData()
+                
+                hideSkeletons()
+            }
+        }
+    }
+    private var currentPage = 1
+    private var totalPages = 1
+    
+    private var allRecipesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 15
+        layout.estimatedItemSize = CGSize(width: 150, height: 231)
+        
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.showsHorizontalScrollIndicator = false
+        view.bounces = view.contentOffset.x > 100
+        view.register(HomeTabVcRecipeCardLarge.self, forCellWithReuseIdentifier: "HomeTabVcRecipeCardLarge")
+        view.contentInset = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 20)
+        
+        view.isSkeletonable = true
+        
+        return view
+    }()
     private let greetingsLabel: UILabel = {
         let label = UILabel()
         label.text = "Hello Jega"
@@ -46,17 +90,53 @@ final class HomeTabVC: UIViewController {
         button.layer.cornerRadius = 15
         return button
     }()
-    private lazy var segmentedControll = CustomSegmentedControl(buttonsArray: createButtonsForSegmentedControll())
-   
+    private let newRecipesLabel: UILabel = {
+        let label = UILabel()
+        label.frame.size = CGSize(width: 103, height: 24)
+        label.text = "New Recipe"
+        label.font = Constants.Fonts.mainFontBold16
+        label.textColor = .black
+        return label
+    }()
+    private var newRecipesCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 15
+        layout.estimatedItemSize = CGSize(width: 251, height: 127)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.showsHorizontalScrollIndicator = false
+        view.bounces = view.contentOffset.x > 100
+        view.register(HomeTabVcRecipeCardSmall.self, forCellWithReuseIdentifier: "HomeTabVcRecipeCardSmall")
+        view.contentInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 20)
+        view.backgroundColor = .white
+        
+        view.isSkeletonable = true
+        
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupUI()
+        setupDelegates()
         
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        allRecipesCollectionView.isSkeletonable = true
+        newRecipesCollectionView.isSkeletonable = true
+        
+        state = .skeletonable
     }
- 
+    
+    private func setupDelegates() {
+        allRecipesCollectionView.delegate = self
+        allRecipesCollectionView.dataSource = self
+        newRecipesCollectionView.delegate = self
+        newRecipesCollectionView.dataSource = self
+    }
+    
     private func setupUI() {
+        view.backgroundColor = .white
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        
         view.addSubview(greetingsLabelsStackView)
         greetingsLabelsStackView.snp.makeConstraints { make in
             make.top.equalTo(view).offset(64)
@@ -76,35 +156,129 @@ final class HomeTabVC: UIViewController {
             make.right.equalTo(filterButton.snp.left).inset(-10)
             make.width.height.equalTo(40)
         }
-        view.addSubview(segmentedControll)
-        segmentedControll.snp.makeConstraints { make in
+        view.addSubview(allRecipesCollectionView)
+        allRecipesCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(86)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(231)
+        }
+        view.addSubview(newRecipesLabel)
+        newRecipesLabel.snp.makeConstraints { make in
+            make.leading.equalTo(view).inset(30)
+            make.top.equalTo(allRecipesCollectionView.snp.bottom).offset(20)
+        }
+        view.addSubview(newRecipesCollectionView)
+        newRecipesCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(newRecipesLabel.snp.bottom).offset(5)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(139)
+        }
+    }
+    // - MARK: Private methods
+    // SKELETONS:
+    private func showSkeletons() {
+        allRecipesCollectionView.showAnimatedGradientSkeleton()
+        newRecipesCollectionView.showAnimatedGradientSkeleton()
+    }
+    
+    private func hideSkeletons() {
+        allRecipesCollectionView.hideSkeleton()
+        newRecipesCollectionView.hideSkeleton()
+    }
+    
+    private func setupCustomSegmentedControl(buttons: [UIButton]) {
+        let cuisinesButtonScroller = CustomSegmentedControl(buttonsArray: buttons)
+        
+        cuisinesButtonScroller.delegate = self
+        
+        view.addSubview(cuisinesButtonScroller)
+        cuisinesButtonScroller.snp.makeConstraints { make in
             make.top.equalTo(greetingsLabelsStackView.snp.bottom).offset(20)
-            make.height.equalTo(31)
-            make.leading.trailing.equalTo(view)
+            make.height.equalTo(40)  
+            make.leading.trailing.equalTo(view).inset(10)
         }
     }
     
-    private func createButtonsForSegmentedControll() -> [UIButton] {
-        var buttonsArrForSegmentedControl = [UIButton]()
-
-        let allCuisineButton = UIButton()
-        let indianCuisineButton = UIButton()
-        let italianCuisineButton = UIButton()
-        let asianCuisineButton = UIButton()
-        let chineseCuisineButton = UIButton()
-        let mexicanCuisineButton = UIButton()
-        let greekCuisineButton = UIButton()
+    private func createButtonsForCuisinesButtonScroller(cuisinesNamesArr: [String]) {
+        let newNames = ["All"] + cuisinesNamesArr
+        var listOfCuisineNames = [UIButton]()
         
-        allCuisineButton.setTitle("All", for: .normal)
-        indianCuisineButton.setTitle("Indian", for: .normal)
-        italianCuisineButton.setTitle("Italian", for: .normal)
-        asianCuisineButton.setTitle("Asian", for: .normal)
-        chineseCuisineButton.setTitle("Chinese", for: .normal)
-        mexicanCuisineButton.setTitle("Mexican", for: .normal)
-        greekCuisineButton.setTitle("Greek", for: .normal)
+        for cuisine in newNames {
+            let button = UIButton()
+            button.setTitle(cuisine, for: .normal)
+            listOfCuisineNames.append(button)
+        }
+        setupCustomSegmentedControl(buttons: listOfCuisineNames)
+    }    
+    // - MARK: OBJC methods
+    @objc func loadData() {
+        currentPage += 1
         
-        buttonsArrForSegmentedControl = [allCuisineButton, indianCuisineButton, italianCuisineButton, asianCuisineButton, chineseCuisineButton, mexicanCuisineButton, greekCuisineButton]
-        
-        return buttonsArrForSegmentedControl
+        allRecipesCollectionView.reloadData()
     }
 }
+extension HomeTabVC: UICollectionViewDelegate, UICollectionViewDataSource, SkeletonCollectionViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UICollectionView, cellIdentifierForItemAt indexPath: IndexPath) -> SkeletonView.ReusableCellIdentifier {
+        if skeletonView == allRecipesCollectionView {
+            return "HomeTabVcRecipeCardLarge"
+        } else {
+            return "HomeTabVcRecipeCardSmall"
+        }
+    }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == allRecipesCollectionView {
+            return presenter?.filteredRecipesByChosenCuisine.count ?? 0
+        } else if collectionView == newRecipesCollectionView {
+            return presenter?.newRecipes.count ?? 0
+        }
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == allRecipesCollectionView {
+            guard let presenter,
+                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardLarge", for: indexPath) as? HomeTabVcRecipeCardLarge else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: presenter.filteredRecipesByChosenCuisine[indexPath.item])
+            return cell
+        } else {
+            guard let presenter,
+                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeTabVcRecipeCardSmall", for: indexPath) as? HomeTabVcRecipeCardSmall else {
+                return UICollectionViewCell()
+            }
+            cell.configure(with: presenter.newRecipes[indexPath.item])
+            return cell
+        }
+    }
+}
+
+extension HomeTabVC: HomeTabViewInput {
+    func sendCusisineArray(cuisinesNamesArr: [String]) {
+        
+        createButtonsForCuisinesButtonScroller(cuisinesNamesArr: cuisinesNamesArr)
+        
+    }
+    func populateWith(state: State) {
+        
+        self.state = state
+        
+    }
+    func populateWithNewRecipes(state: State) {
+        
+        self.state = state
+        
+    }
+}
+
+extension HomeTabVC: CustomSegmentedControlDelegate {
+    func showChosenCuisine(chosenCuisine: String) {
+   
+           presenter?.filterRecipeResultsByCuisine(chosenCuisine)
+   
+       }
+}
+
+

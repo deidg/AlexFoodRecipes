@@ -8,5 +8,7 @@
 import Foundation
 
 protocol PresenterProvider {
+    
   func getPresenter() -> AnyPresenter?
+    
 }

@@ -10,24 +10,31 @@ import UIKit
 import SnapKit
 
 
+protocol CustomSegmentedControlDelegate: AnyObject {
+    
+    func showChosenCuisine(chosenCuisine: String)
+    
+}
+
 class CustomSegmentedControl: UIView {
     
+    weak var delegate: CustomSegmentedControlDelegate?
     var previousIndex = 0
-    
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .clear
+        scrollView.bounces = scrollView.contentOffset.x > 100
+        
         return scrollView
     }()
     private var buttonsArray = [UIButton]()
     
     init(buttonsArray: [UIButton]) {
         super.init(frame: .zero)
+        self.buttonsArray = buttonsArray
         setupScrollView()
         setupContentButtons(buttonsArray: buttonsArray)
-
-        self.buttonsArray = buttonsArray
     }
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -39,7 +46,7 @@ class CustomSegmentedControl: UIView {
     
     private func checkContentFit() {
         let doesContentFit = scrollView.contentSize.width + 32 <= bounds.width
-        
+
         scrollView.snp.remakeConstraints { make in
             make.top.bottom.equalToSuperview()
             make.centerX.equalToSuperview()
@@ -54,21 +61,19 @@ class CustomSegmentedControl: UIView {
             }
         }
     }
-    
     private func setupScrollView() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
     }
-    
     private func setupContentButtons(buttonsArray: [UIButton]) {
         var previousButton: UIButton?
         
         for button in buttonsArray {
             button.addTarget(self, action: #selector(segmentedValueChanged(_:)), for: .touchUpInside)
             button.contentEdgeInsets = UIEdgeInsets(top: 7, left: 20, bottom: 7, right: 20)
-    
+            
             if button != buttonsArray.first {
                 button.backgroundColor = .clear
                 let customColor: UIColor = Constants.Colors.mainColor
@@ -89,7 +94,7 @@ class CustomSegmentedControl: UIView {
                 if let previousButton = previousButton {
                     make.leading.equalTo(previousButton.snp.trailing).offset(8)
                 } else {
-                    make.leading.equalTo(scrollView.snp.leading).offset(16)
+                    make.leading.equalTo(scrollView.snp.leading).offset(8)
                 }
             }
             previousButton = button
@@ -99,10 +104,10 @@ class CustomSegmentedControl: UIView {
         }
         buttonsArray.first?.isSelected = true
     }
-    
     @objc private func segmentedValueChanged(_ sender: UIButton) {
-        print(sender.titleLabel?.text)      //TODO: to delete
-                
+        guard let chosenCuisine: String = sender.title(for: .normal) else { return }
+        delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
+        
         scrollView.scrollRectToVisible(sender.frame, animated: true)
         
         for button in buttonsArray {
@@ -113,5 +118,8 @@ class CustomSegmentedControl: UIView {
         sender.isSelected = true
         sender.backgroundColor = Constants.Colors.mainColor
         sender.setTitleColor(.white, for: .normal)
-    }
+    }    
+    private func sendChosenCuisine(chosenCuisine: String) {        
+        delegate?.showChosenCuisine(chosenCuisine: chosenCuisine)
+        }
 }

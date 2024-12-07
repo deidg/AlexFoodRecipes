@@ -9,7 +9,9 @@ import UIKit
 import Foundation
 import SnapKit
 
-class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
+class MainTabBarViewController: UITabBarController, AnyViewController {
+    var presenter: MainTabBarViewOutput?
+    
     private let addRecipeButton : UIButton = {
         let addRecipeButton = UIButton(frame: CGRect(x: 0, y: 0, width: 60, height: 60))
         addRecipeButton.setTitle("", for: .normal)
@@ -76,7 +78,7 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         addRecipeButton.isEnabled = true
     }
     private func setupCustomTabItems() {
-        let homeTabVC = UINavigationController(rootViewController: HomeTabVC())
+        let homeTabVC = Dependencies.shared.initModule(type: HomeTabModule.self).viewController!
         let favouritesTabVC = UINavigationController(rootViewController: FavouritesTab())
         let notificationsTabVC = UINavigationController(rootViewController: NotificationsTabVC())
         let accountTabVC = UINavigationController(rootViewController: AccountTabVC())
@@ -102,7 +104,6 @@ class MainTabBarViewController: UITabBarController/*, AnyViewController*/ {
         addRecipeButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
     }
     @objc private func buttonPressed() {
-        print("herr")
     }
 }
 extension UIImage {
@@ -111,4 +112,8 @@ extension UIImage {
             self?.draw(in: CGRect(origin: .zero, size: newSize))
         }
     }
+}
+
+extension MainTabBarViewController: MainTabBarViewInput {
+    
 }
